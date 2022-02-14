@@ -17,4 +17,10 @@
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.10" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ProjectDavomat.BL\ProjectDavomat.BL.csproj" />
+    <ProjectReference Include="..\ProjectDavomat.Data\ProjectDavomat.Data.csproj" />
+    <ProjectReference Include="..\ProjectDavomat.Domain\ProjectDavomat.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

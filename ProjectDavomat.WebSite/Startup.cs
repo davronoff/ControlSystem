@@ -5,9 +5,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Pojectdavomat.BL;
+using ProjectDavomat.BL;
+using ProjectDavomat.Data;
 
 namespace ProjectDavomat.WebSite
 {
@@ -23,6 +27,13 @@ namespace ProjectDavomat.WebSite
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IOqituvchiInterface, OqituvchiRepasitory>();
+
+            services.AddScoped<IOquvchiInterface, OquvchiRepasitory>();
+
+            services.AddDbContext<AppDbContext>(options =>
+                options.UseNpgsql(Configuration.GetConnectionString("PostgreDb")));
+
             services.AddControllersWithViews();
         }
 

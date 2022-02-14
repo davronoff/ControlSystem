@@ -3,14 +3,14 @@ using ProjectDavomat.Domain;
 
 namespace ProjectDavomat.Data
 {
-    public class DavomatDbContext: DbContext
+    public class AppDbContext: DbContext
     {
-        public DavomatDbContext(DbContextOptions<DavomatDbContext>options)
+        public AppDbContext(DbContextOptions<AppDbContext>options)
             :base(options)
         {
 
         }
         public DbSet<Oqituvchi> teachers {get; set;}
-        public DbSet<Oquvchi> puples { get; set; }
+        public DbSet<Oquvchi> students { get; set; }
     }
 }
