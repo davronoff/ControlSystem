@@ -30,9 +30,9 @@ namespace DavomatProject.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<IOqituvchiInterface, OqituvchiRepasitory>();
+            services.AddScoped<ITeacherInterface, TeacherRepasitory>();
 
-            services.AddScoped<IOquvchiInterface, OquvchiRepasitory>();
+            services.AddScoped<IUserInterface, UserRepasitory>();
 
             /*services.AddDbContext<AppDbContext>(options =>
                 options.UseNpgsql(Configuration.GetConnectionString("PostgreDb")));*/
