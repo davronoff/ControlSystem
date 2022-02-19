@@ -1,20 +1,13 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Pojectdavomat.BL;
 using ProjectDavomat.BL;
-using ProjectDavomat.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using ProjectDavomat.BL.Interface;
+using ProjectDavomat.BL.Repasitory;
 
 namespace DavomatProject.Api
 {
@@ -30,9 +23,15 @@ namespace DavomatProject.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<ITeacherInterface, TeacherRepasitory>();
+            services.AddTransient<ITeacherInterface, TeacherRepasitory>();
 
-            services.AddScoped<IUserInterface, UserRepasitory>();
+            services.AddTransient<IUserInterface, UserRepasitory>();
+
+            services.AddTransient<IStaffInterface, StaffRepasitory>();
+
+            services.AddTransient<ICourseInterface, CourseRepasitory>();
+
+            services.AddTransient<IServiceInterface, ServiceRepasitory>();
 
             /*services.AddDbContext<AppDbContext>(options =>
                 options.UseNpgsql(Configuration.GetConnectionString("PostgreDb")));*/
