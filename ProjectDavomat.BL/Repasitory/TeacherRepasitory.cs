@@ -1,5 +1,5 @@
-using Microsoft.EntityFrameworkCore;
-using Pojectdavomat.BL;
+﻿using Microsoft.EntityFrameworkCore;
+using ProjectDavomat.BL.Interface;
 using ProjectDavomat.Data;
 using ProjectDavomat.Domain;
 using System;
@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ProjectDavomat.BL
+namespace ProjectDavomat.BL.Repasitory
 {
     public class TeacherRepasitory : ITeacherInterface
     {

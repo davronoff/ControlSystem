@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectDavomat.BL", "ProjectDavomat.BL\ProjectDavomat.BL.csproj", "{6DAA8065-0680-494E-BF48-2AEEC2568AB0}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectDavomat.Data", "ProjectDavomat.Data\ProjectDavomat.Data.csproj", "{BB4D6C2C-88F2-44F6-AE39-892628B577B6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectDavomat.Domain", "ProjectDavomat.Domain\ProjectDavomat.Domain.csproj", "{69DAACB8-3B17-4593-A4F9-076DC8CC761B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectDavomat.WebSite", "ProjectDavomat.WebSite\ProjectDavomat.WebSite.csproj", "{E2A5049D-B5CD-4ACE-AC6A-4DEBB4CCEF14}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DavomatProject.Api", "DavomatProject.Api\DavomatProject.Api.csproj", "{3FCDBB68-3553-4E91-8AD1-10000447BEB0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DavomatProject.Api", "DavomatProject.Api\DavomatProject.Api.csproj", "{3FCDBB68-3553-4E91-8AD1-10000447BEB0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectDavomat.BL", "ProjectDavomat.BL\ProjectDavomat.BL.csproj", "{76E0ED1A-82E3-44FE-BCE4-748D347F4754}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,10 +19,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{6DAA8065-0680-494E-BF48-2AEEC2568AB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6DAA8065-0680-494E-BF48-2AEEC2568AB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6DAA8065-0680-494E-BF48-2AEEC2568AB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6DAA8065-0680-494E-BF48-2AEEC2568AB0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BB4D6C2C-88F2-44F6-AE39-892628B577B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BB4D6C2C-88F2-44F6-AE39-892628B577B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB4D6C2C-88F2-44F6-AE39-892628B577B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -39,6 +35,10 @@ Global
 		{3FCDBB68-3553-4E91-8AD1-10000447BEB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3FCDBB68-3553-4E91-8AD1-10000447BEB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3FCDBB68-3553-4E91-8AD1-10000447BEB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76E0ED1A-82E3-44FE-BCE4-748D347F4754}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76E0ED1A-82E3-44FE-BCE4-748D347F4754}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76E0ED1A-82E3-44FE-BCE4-748D347F4754}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76E0ED1A-82E3-44FE-BCE4-748D347F4754}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

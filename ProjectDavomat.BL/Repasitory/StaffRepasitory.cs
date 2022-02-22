@@ -14,7 +14,7 @@ namespace ProjectDavomat.BL.Repasitory
     {
         private readonly AppDbContext _dbStaff;
 
-        public StaffRepasitory(AppDbContext dbStaff) 
+        public StaffRepasitory(AppDbContext dbStaff)
         {
             _dbStaff = dbStaff;
         }

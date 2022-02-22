@@ -1,9 +1,9 @@
-using ProjectDavomat.Domain;
+﻿using ProjectDavomat.Domain;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Pojectdavomat.BL
+namespace ProjectDavomat.BL.Interface
 {
     public interface ITeacherInterface
     {

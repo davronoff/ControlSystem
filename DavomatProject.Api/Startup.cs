@@ -4,8 +4,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using Pojectdavomat.BL;
-using ProjectDavomat.BL;
 using ProjectDavomat.BL.Interface;
 using ProjectDavomat.BL.Repasitory;
 
