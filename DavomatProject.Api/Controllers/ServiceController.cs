@@ -16,35 +16,35 @@ namespace DavomatProject.Api.Controllers
             _serviceService = serviceService;
         }
 
-        [Route ("getall")]
+        [HttpGet, Route ("getall")]
         public async Task<IActionResult> GetAll()
         {
             var json = await _serviceService.GetAllService();
             return Ok(json);
         }
 
-        [Route("get/{id}")]
+        [HttpGet, Route("get/{id}")]
         public async Task<IActionResult> Get(Guid id)
         {
             var json = _serviceService.GetService(id);
             return Ok(json);
         }
 
-        [Route("add")]
+        [HttpPost, Route("add")]
         public async Task<IActionResult> Add(Service newService)
         {
             var json = await _serviceService.AddService(newService);
             return Ok(json);
         }
 
-        [Route("update")]
+        [HttpPut, Route("update")]
         public async Task<IActionResult> Update(Service servcie)
         {
             var json = _serviceService.UpdateService(servcie);
             return Ok(servcie);
         }
 
-        [Route("delete/{id}")]
+        [HttpDelete, Route("delete/{id}")]
         public async Task<IActionResult> Delete(Guid id)
         {
             await _serviceService.DeleteService(id);

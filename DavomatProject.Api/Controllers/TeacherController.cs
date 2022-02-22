@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Pojectdavomat.BL;
+using ProjectDavomat.BL.Interface;
 using ProjectDavomat.Domain;
 using System;
 using System.Threading.Tasks;

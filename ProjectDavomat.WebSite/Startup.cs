@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Pojectdavomat.BL;
-using ProjectDavomat.BL;
+using ProjectDavomat.BL.Interface;
+using ProjectDavomat.BL.Repasitory;
 using ProjectDavomat.Data;
 
 namespace ProjectDavomat.WebSite
@@ -27,9 +27,15 @@ namespace ProjectDavomat.WebSite
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<ITeacherInterface, TeacherRepasitory>();
+            services.AddTransient<ITeacherInterface, TeacherRepasitory>();
 
-            services.AddScoped<IOquvchiInterface, UserRepasitory>();
+            services.AddTransient<IUserInterface, UserRepasitory>();
+
+            services.AddTransient<IStaffInterface, StaffRepasitory>();
+
+            services.AddTransient<ICourseInterface, CourseRepasitory>();
+
+            services.AddTransient<IServiceInterface, ServiceRepasitory>();
 
             services.AddDbContext<AppDbContext>(options =>
                 options.UseNpgsql(Configuration.GetConnectionString("PostgreDb")));

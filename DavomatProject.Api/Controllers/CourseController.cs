@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace DavomatProject.Api.Controllers
 {
+    [ApiController, Route("[controller]")]
     public class CourseController : ControllerBase
     {
         private readonly ICourseInterface _serviceCourse;
@@ -15,35 +16,35 @@ namespace DavomatProject.Api.Controllers
             _serviceCourse = serviceCourse;
         }
 
-        [Route("getall")]
+        [HttpGet, Route("getall")]
         public async Task<IActionResult> Getall()
         {
             var json = await _serviceCourse.GetAllCourse();
             return Ok(json);
         }
 
-        [Route("get/{id}")]
+        [HttpGet, Route("get/{id}")]
         public async Task<IActionResult> Get(Guid id)
         {
             var json = await _serviceCourse.GetCourse(id);
             return Ok(json);
         }
 
-        [Route("add")] 
+        [HttpPost, Route("add")] 
         public async Task<IActionResult> Add(Course newCourse)
         {
             var json = await _serviceCourse.AddCourse(newCourse);
             return Ok(json);
         }
 
-        [Route("update")]
+        [HttpPut, Route("update")]
         public async Task<IActionResult> Update(Course course)
         {
             var json = await _serviceCourse.UpdateCourse(course);
             return Ok(json);
         }
 
-        [Route("delete/{id}")]
+        [HttpDelete, Route("delete/{id}")]
         public async Task<IActionResult> Delete(Guid id)
         {
             await _serviceCourse.DeleteCourse(id);

@@ -16,35 +16,35 @@ namespace DavomatProject.Api.Controllers
             _staffSerice = staffService;
         }
 
-        [Route("gettall")]
+        [HttpGet,Route("gettall")]
         public async Task<IActionResult> GetAll()
         {
             var json = await _staffSerice.GetAllStaff();
             return Ok(json);
         }
 
-        [Route("get/{id}")]
+        [HttpGet,Route("get/{id}")]
         public async Task<IActionResult> Get(Guid id)
         {
             var json = await _staffSerice.GetStaff(id);
             return Ok(json);
         }
 
-        [Route("add")]
+        [HttpPost, Route("add")]
         public async Task<IActionResult> Add(Staff newStaff)
         {
             var json = await _staffSerice.AddStaff(newStaff);
             return Ok(json);
         }
 
-        [Route("update")]
+        [HttpPut, Route("update")]
         public async Task<IActionResult> Update(Staff staff)
         {
             var json = await _staffSerice.UpdateStaff(staff);
             return Ok(staff);
         }
 
-        [Route("delete/{id}")]
+        [HttpDelete, Route("delete/{id}")]
         public async Task<IActionResult> Delete(Guid id)
         {
             await _staffSerice.DeleteStaff(id);

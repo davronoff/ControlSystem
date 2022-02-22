@@ -1,11 +1,13 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using ProjectDavomat.BL.Interface;
 using ProjectDavomat.BL.Repasitory;
+using ProjectDavomat.Data;
 
 namespace DavomatProject.Api
 {
@@ -31,8 +33,8 @@ namespace DavomatProject.Api
 
             services.AddTransient<IServiceInterface, ServiceRepasitory>();
 
-            /*services.AddDbContext<AppDbContext>(options =>
-                options.UseNpgsql(Configuration.GetConnectionString("PostgreDb")));*/
+            services.AddDbContext<AppDbContext>(options =>
+                options.UseNpgsql(Configuration.GetConnectionString("PostgreDb")));
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectDavomat.WebSite", "P
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DavomatProject.Api", "DavomatProject.Api\DavomatProject.Api.csproj", "{3FCDBB68-3553-4E91-8AD1-10000447BEB0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectDavomat.BL", "ProjectDavomat.BL\ProjectDavomat.BL.csproj", "{76E0ED1A-82E3-44FE-BCE4-748D347F4754}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectDavomat.BL", "ProjectDavomat.BL\ProjectDavomat.BL.csproj", "{76E0ED1A-82E3-44FE-BCE4-748D347F4754}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
