@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace DavomatProject.Api.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("[api/controller]")]
     public class StudentController : ControllerBase
     {
         private readonly IUserInterface _serviceStudent;

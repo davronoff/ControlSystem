@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DavomatProject.Api.Controllers
 {
-    [ApiController, Route("[controller]")]
+    [ApiController, Route("[api/controller]")]
     public class ServiceController : ControllerBase
     {
         private readonly IServiceInterface _serviceService;

@@ -1,0 +1,72 @@
+@font-face {
+    font-family: 'Gosha Sans';
+    src: url('GoshaSans-Medium.eot');
+    src: local('Gosha Sans Medium'), local('GoshaSans-Medium'),
+        url('GoshaSans-Medium.eot?#iefix') format('embedded-opentype'),
+        url('GoshaSans-Medium.woff2') format('woff2'),
+        url('GoshaSans-Medium.woff') format('woff'),
+        url('GoshaSans-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gosha Sans';
+    src: url('GoshaSans-Light.eot');
+    src: local('Gosha Sans Light'), local('GoshaSans-Light'),
+        url('GoshaSans-Light.eot?#iefix') format('embedded-opentype'),
+        url('GoshaSans-Light.woff2') format('woff2'),
+        url('GoshaSans-Light.woff') format('woff'),
+        url('GoshaSans-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gosha Sans';
+    src: url('GoshaSans-Bold.eot');
+    src: local('Gosha Sans Bold'), local('GoshaSans-Bold'),
+        url('GoshaSans-Bold.eot?#iefix') format('embedded-opentype'),
+        url('GoshaSans-Bold.woff2') format('woff2'),
+        url('GoshaSans-Bold.woff') format('woff'),
+        url('GoshaSans-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gosha Sans';
+    src: url('GoshaSans-Regular.eot');
+    src: local('Gosha Sans Regular'), local('GoshaSans-Regular'),
+        url('GoshaSans-Regular.eot?#iefix') format('embedded-opentype'),
+        url('GoshaSans-Regular.woff2') format('woff2'),
+        url('GoshaSans-Regular.woff') format('woff'),
+        url('GoshaSans-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gosha Sans';
+    src: url('GoshaSans-Ultrabold.eot');
+    src: local('Gosha Sans Ultrabold'), local('GoshaSans-Ultrabold'),
+        url('GoshaSans-Ultrabold.eot?#iefix') format('embedded-opentype'),
+        url('GoshaSans-Ultrabold.woff2') format('woff2'),
+        url('GoshaSans-Ultrabold.woff') format('woff'),
+        url('GoshaSans-Ultrabold.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gosha Sans';
+    src: url('GoshaSans-Ultralight.eot');
+    src: local('Gosha Sans Ultralight'), local('GoshaSans-Ultralight'),
+        url('GoshaSans-Ultralight.eot?#iefix') format('embedded-opentype'),
+        url('GoshaSans-Ultralight.woff2') format('woff2'),
+        url('GoshaSans-Ultralight.woff') format('woff'),
+        url('GoshaSans-Ultralight.ttf') format('truetype');
+    font-weight: 200;
+    font-style: normal;
+}
+
