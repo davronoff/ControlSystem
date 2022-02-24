@@ -1,0 +1,14 @@
+.button-group {
+    display: flex;
+    justify-content: center;
+}
+
+.button-group span {
+    font-size: 20px;
+    width: 200px;
+}
+
+.button-group a {
+    text-decoration: none;
+    margin-right: 200px;
+}

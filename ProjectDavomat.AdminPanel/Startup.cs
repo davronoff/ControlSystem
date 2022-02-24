@@ -4,12 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
 using ProjectDavomat.BL.Interface;
 using ProjectDavomat.BL.Repasitory;
 using ProjectDavomat.Data;
 
-namespace DavomatProject.Api
+namespace ProjectDavomat.AdminPanel
 {
     public class Startup
     {
@@ -36,11 +35,7 @@ namespace DavomatProject.Api
             services.AddDbContext<AppDbContext>(options =>
                 options.UseNpgsql(Configuration.GetConnectionString("PostgreDb")));
 
-            services.AddControllers();
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "DavomatProject.Api", Version = "v1" });
-            });
+            services.AddControllersWithViews();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,11 +44,15 @@ namespace DavomatProject.Api
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "DavomatProject.Api v1"));
             }
-
+            else
+            {
+                app.UseExceptionHandler("/Home/Error");
+                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+                app.UseHsts();
+            }
             app.UseHttpsRedirection();
+            app.UseStaticFiles();
 
             app.UseRouting();
 
@@ -61,7 +60,9 @@ namespace DavomatProject.Api
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

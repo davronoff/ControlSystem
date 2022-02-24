@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ProjectDavomat.AdminPanel</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    
+    <link rel="stylesheet"href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css" />
+    <link rel="stylesheet" href="~/css/style.css" />
+    <link rel="stylesheet" href="~/css/style-company.css" />
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+    
+
+</head>
+<body>
+    <header>
+        <div class="sidebar">
+            <div class="sidebar-brand">
+                <h1><span class="la la-stream"></span><span>USSD</span></h1>
+            </div>
+
+            <div class="sidebar-menu">
+                <ul>
+                    <li>
+                        <a href=""><span class="las la-home"></span>
+                            <span>Bosh sahifa</span></a>
+                    </li>
+                    <li>
+                        <a href="company.html"><span class="las la-bars"></span>
+                            <span>Kategoriyalar</span></a>
+                    </li>
+                    <li>
+                        <a href=""><span class="las la-gift"></span>
+                            <span>Productlar</span></a>
+                    </li>
+                    <li>
+                        <a href=""><span class="las la-user-edit"></span>
+                            <span>Adminlarni boshqarish</span></a>
+                    </li>
+                    <li class="out">
+                        <a href=""><span><i class="las la-arrow-circle-left"></i></span>
+                            <span>Hisobdan chiqish</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="main-content">
+            <div class="user-wrapper">
+                <img src="~/images/user.png" width="40px" height="40px" alt="" />
+                <div>
+                    <h4>Nodirbek Abdulaxadov</h4>
+                    <small>Supper admin</small>
+                </div>
+            </div>
+        </div>
+        </header>
+
+        <!--Main start-->
+        <main role="main" class="main-content">
+            @RenderBody()
+        </main>
+        <!--Main end-->
+
+    <footer>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

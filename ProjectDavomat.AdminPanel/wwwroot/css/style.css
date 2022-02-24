@@ -1,0 +1,256 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Montserrat:wght@400;600&display=swap");
+
+:root {
+    --main-color: #02032a;
+    --li-hover: #5b5cb9;
+    --color-dark: #1D2231;
+    --text-grey: #8390A2;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style-type: none;
+    text-decoration: none;
+    font-family: "Lato", sans-serif;
+}
+body {    
+    min-width: 1200px !important;
+}
+
+.sidebar {
+    width: 240px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background: var(--main-color);
+    z-index: 100;
+}
+
+.sidebar-brand {
+    color: white;
+    height: 70px;
+    padding: 1rem 0rem 1rem 2rem;
+}
+
+.sidebar-menu {
+    margin-top: 2rem;
+}
+
+.sidebar-menu li {
+    width: 100%;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+}
+
+.out {
+    width: 100%;
+    margin-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.out span {
+    color: rgb(218, 60, 60);
+}
+
+.sidebar-menu a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+}
+
+.sidebar-menu a span:first-child {
+    font-size: 1.1rem;
+    padding-right: 1rem;
+}
+
+.sidebar-brand span {
+    display: inline-block;
+    padding-right: 1rem;
+}
+
+.main-content {
+    margin-left: 240px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.7rem 1.2rem;
+    left: 240px;
+    width: calc(100% - 240px);
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    background: #BDBDBD
+}
+
+.table-search {
+    width: 300px;
+    position: absolute;
+    top: 0;
+    right: 0 !important;
+}
+
+.table-header {
+    margin-bottom: 15px;
+}
+
+header h4 {
+    color: #4527A0;
+}
+
+.card-style {
+    margin: auto;
+    float: none;
+    justify-content: space-evenly;
+}
+
+.card-style p {
+    color: var(--text-grey);
+}
+
+.rigth {
+    text-align: right;
+}
+
+.search-wrapper {
+    border: 1px solid black;
+    border-radius: 30px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    overflow-x: hidden;
+    background: white;
+}
+
+.search-wrapper input {
+    height: 100%;
+    padding: 0.5rem;
+    border: none;
+    outline: none;
+}
+
+.search-wrapper span {
+    display: inline-block;
+    padding: 0rem 1rem;
+    font-size: 1.5rem;
+}
+
+.user-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.user-wrapper img {
+    border-radius: 50%;
+    margin-right: 1rem;
+}
+
+.user-wrapper small {
+    display: inline-block;
+    color: #F9FBE7;
+}
+
+.button-group {
+    justify-content: space-around;
+}
+
+.button-group a {
+    width: 120px;   
+    font-size: 1rem
+}
+
+main {
+    padding: 4rem 1.5rem;
+    min-height: calc(100vh - 25px);
+    background: #E8EAF6
+}
+
+.com-header {
+    display: inline-block;
+}
+
+
+/* card add */
+.card-columns .card:hover .card-img {
+    opacity: 1;
+    -webkit-transform-style: preserve-3d;
+}
+
+.card-columns .card-body {
+    height: 150px;
+    font-family: 'Nunito', sans-serif;
+    background: #fbfafd;
+}
+
+
+.card-columns .card-img {
+    height: 380px;
+    vertical-align: bottom;
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+    opacity: .8;
+}
+
+.modal .card-img {
+    height: 500px;
+    vertical-align: bottom;
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+}
+
+.card-columns .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(37,33,82,.12), 0 4px 8px rgba(37,33,82,.06);
+}
+
+.card-footer {
+    background: #fbfafd;
+}
+/* card add */
+
+
+
+
+/* @media only screen and (max-width: 1200px) {
+    
+    .sidebar {
+        width: 70px;
+        transition: 0.4s;
+    }
+
+    .sidebar .sidebar-brand,
+    .sidebar li{
+        padding-left: 1rem;
+    }
+
+    .sidebar .sidebar-brand h1 span:last-child,
+    .sidebar li a span:last-child {
+        display: none;
+    }
+
+    .main-content {
+        margin-left: 70px;
+        transition: 0.4s;
+    }
+
+    .main-content header{
+        width: calc(100% - 70px);
+        left: 70px;
+        transition: 0.4s;
+    }
+
+}
+
+@media only screen and (max-width: 960px) {
+    .cards {
+        grid-template-columns: repeat(3, 1fr);
+    }
+} */

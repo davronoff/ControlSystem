@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DavomatProject.Api", "Davom
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectDavomat.BL", "ProjectDavomat.BL\ProjectDavomat.BL.csproj", "{76E0ED1A-82E3-44FE-BCE4-748D347F4754}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectDavomat.AdminPanel", "ProjectDavomat.AdminPanel\ProjectDavomat.AdminPanel.csproj", "{3EA7BAB3-9ECF-4008-A8F3-BE5611A66439}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{76E0ED1A-82E3-44FE-BCE4-748D347F4754}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{76E0ED1A-82E3-44FE-BCE4-748D347F4754}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{76E0ED1A-82E3-44FE-BCE4-748D347F4754}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3EA7BAB3-9ECF-4008-A8F3-BE5611A66439}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3EA7BAB3-9ECF-4008-A8F3-BE5611A66439}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3EA7BAB3-9ECF-4008-A8F3-BE5611A66439}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3EA7BAB3-9ECF-4008-A8F3-BE5611A66439}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
