@@ -1,0 +1,96 @@
+﻿@{
+    ViewData["Title"] = "Teacher Page";
+    Layout = "Layout";
+}
+
+  <div class="row blok mt-5">
+    <div class="col-xs-11">
+        <div class="box data-table">
+            <div class="box-header position-relative table-header mt-2">
+                <div class="d-flex justify-content-between mt-3 mx-4 com-header">
+                    <h3>Teacher</h3>
+                    <a href="/addhtml/addteacher.html">
+                        <span class="btn btn-success"><i class="las la-plus"></i>Add Course</span>
+                    </a>
+                </div>
+            </div>
+            <div class="jadval box-body table-responsive no-padding">
+                <table class="table table-hover">
+                    <tr>
+                        <th>Id</th>
+                        <th>FName</th>
+                        <th>LName</th>
+                        <th>Skills</th>
+                        <th>Image</th>
+                        <th>Experince</th>
+                        <th>Action</th>
+                    </tr>
+                    <tr>
+                        <td>7339d7c4-d8b2-46b1-a57c-cf081ac83151</td>
+                        <td>Sara</td>
+                        <td>Rose</td>
+                        <td>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#infoModal">Skills</button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="infoModal" tabindex="-1"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-scrollable">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel"> Full Skills
+                                                </h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Internet-paketlar\" Constructor/Constructor for corporate, M2M
+                                            Basic tarif rejalaridan tashqari barcha tarif rejalari uchun
+                                            amal qiladi. Shu kabi paketlar Mobil Byudjet xizmatidan
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>Some Image</td>
+                        <td>3 year</td>
+                        <td class="cell">
+                            <a href="../Infos/internet_Info.html">
+                                <span class="btn btn-success">Edite</span>
+                            </a>
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                data-bs-target="#deleteModal">Delete</button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="deleteModal" tabindex="-1"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-scrollable">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Alert</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h4>Are you realy want delete this course?</h4>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary">I am sure</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div><!-- /.box-body -->
+        </div><!-- /.box -->
+    </div>
+  </div>

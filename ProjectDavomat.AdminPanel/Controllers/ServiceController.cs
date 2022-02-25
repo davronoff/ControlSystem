@@ -3,9 +3,9 @@ using System.Threading.Tasks;
 
 namespace ProjectDavomat.AdminPanel.Controllers
 {
-    public class HomeController : Controller
+    public class ServiceController : Controller
     {
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Services()
         {
             return View();
         }
