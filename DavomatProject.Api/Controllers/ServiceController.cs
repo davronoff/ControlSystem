@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DavomatProject.Api.Controllers
 {
-    [ApiController, Route("[api/controller]")]
+    [ApiController, Route("api/[controller]")]
     public class ServiceController : ControllerBase
     {
         private readonly IServiceInterface _serviceService;
@@ -26,7 +26,7 @@ namespace DavomatProject.Api.Controllers
         [HttpGet, Route("get/{id}")]
         public async Task<IActionResult> Get(Guid id)
         {
-            var json = _serviceService.GetService(id);
+            var json = await _serviceService.GetService(id);
             return Ok(json);
         }
 
@@ -40,7 +40,7 @@ namespace DavomatProject.Api.Controllers
         [HttpPut, Route("update")]
         public async Task<IActionResult> Update(Service servcie)
         {
-            var json = _serviceService.UpdateService(servcie);
+            var json = await _serviceService.UpdateService(servcie);
             return Ok(servcie);
         }
 

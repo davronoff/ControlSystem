@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DavomatProject.Api.Controllers
 {
-    [ApiController, Route("[api/controller]")]
+    [ApiController, Route("api/[controller]")]
     public class StaffController : ControllerBase
     {
         private readonly IStaffInterface _staffSerice;
