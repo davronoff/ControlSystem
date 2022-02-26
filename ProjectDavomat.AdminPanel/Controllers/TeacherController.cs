@@ -9,5 +9,9 @@ namespace ProjectDavomat.AdminPanel.Controllers
         {
             return View();
         }
+        public async Task<IActionResult> AddTeachers()
+        {
+            return View();
+        }
     }
 }

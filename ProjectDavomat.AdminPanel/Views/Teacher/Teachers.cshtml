@@ -1,6 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Teacher Page";
-    Layout = "Layout";
+    Layout = "_Layout";
 }
 
   <div class="row blok mt-5">
@@ -9,7 +9,7 @@
             <div class="box-header position-relative table-header mt-2">
                 <div class="d-flex justify-content-between mt-3 mx-4 com-header">
                     <h3>Teacher</h3>
-                    <a href="/addhtml/addteacher.html">
+                    <a asp-controller="teacher" asp-action="addteachers">
                         <span class="btn btn-success"><i class="las la-plus"></i>Add Course</span>
                     </a>
                 </div>

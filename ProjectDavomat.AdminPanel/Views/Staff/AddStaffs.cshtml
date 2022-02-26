@@ -1,0 +1,45 @@
+﻿@{
+    ViewData["Title"] = "Add Staff Page";
+    Layout = "_Layout";
+}
+            <div class="box-header position-relative table-header mt-2">
+                <div class="d-flex justify-content-between mt-3 com-header">
+                    <h3>Add new course</h3>
+                </div>
+            </div>
+            <form>
+                <div class="form-group mx-4" style="padding: 10px; font-size: 18px;">
+                    <label for="title">FName</label>
+                    <input type="text" class="form-control" id="title" placeholder="Service title">
+                </div>
+                <div class="form-group mx-4" style="padding: 10px; font-size: 18px;">
+                    <label for="title">LName</label>
+                    <input type="text" class="form-control" id="title" placeholder="Service title">
+                </div>
+                <div class="input-group mx-4 "style="padding: 10px; font-size: 18px;">
+                    <input type="file" class="form-control" id="inputGroupFile02">
+                    <label class="input-group-text" for="inputGroupFile02"></label>
+                </div>
+                <div class="form-group mx-4" style="padding: 10px; font-size: 18px;">
+                    <label for="description">About</label>
+                    <textarea class="form-control" id="description" placeholder="About staff" rows="12"></textarea>
+                </div>
+                <div class="form-group  mx-4" style="padding: 10px; font-size: 18px;">
+                    <label for="toplam">Service Date</label>
+                    <select class="form-control" id="toplam">
+                        <option disabled selected > -- Select staff position  -- </option>
+                        <option>Maneger</option>
+                        <option>Accounter-</option>
+                        <option>Secretary</option>
+                    </select>
+                </div>
+                <div class="button-group">
+                    <a href="/html/index.html">
+                        <span class="btn btn-success">Saqlash</span>
+                    </a>
+                    <a href="/html/index.html">
+                        <span class="btn btn-info">Bekor qilish</span>
+                    </a>
+                </div>
+            </form>
+
