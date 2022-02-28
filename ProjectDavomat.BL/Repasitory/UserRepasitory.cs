@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ProjectDavomat.BL.Interface;
-using ProjectDavomat.Data;
+using ProjectDavomat.Data.DataLayer;
 using ProjectDavomat.Domain;
 using System;
 using System.Collections.Generic;

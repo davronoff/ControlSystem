@@ -2,7 +2,7 @@
     ViewData["Title"] = "Staffs Page";
     Layout = "_Layout";
 }
-
+@model List<Staff>
     <div class="row blok mt-5">
         <div class="col-xs-11">
             <div class="box data-table">
@@ -25,11 +25,13 @@
                             <th>Position</th>
                             <th>Action</th>
                         </tr>
-                        <tr>
-                            <td>7339d7c4-d8b2-46b1-a57c-cf081ac83151</td>
-                            <td>Jack</td>
-                            <td>Black</td>
-                            <td>Some image</td>
+                        @foreach (var itam in Model)
+                    {
+                     <tr>
+                            <td>@itam.Id</td>
+                            <td>@itam.FirstName</td>
+                            <td>@itam.LastName</td>
+                            <td>@itam.Image</td>
                             <td>
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                     data-bs-target="#infoModal">Aboute</button>
@@ -46,17 +48,7 @@
                                                     aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                Internet-paketlar\" Constructor/Constructor for corporate, M2M
-                                                Basic tarif rejalaridan tashqari barcha tarif rejalari uchun
-                                                amal qiladi. Shu kabi paketlar Mobil Byudjet xizmatidan
-                                                foydalanuvchilar uchun mavjud. Internet-paketlar menyusiga
-                                                kirish uchun: *111*1*9# (o'zbek tilida ma'lumot), *111*2*9# (rus
-                                                tilida ma'lumot) ni terish kerak. Internet-paketlar ham
-                                                jismoniy, ham yuridik shaxslarga taqdim etiladi. Internet
-                                                paketining amal qilish muddati ulanish vaqtidan boshlab 30 kun.
-                                                Joriy paketni yangilash ushbu guruhdan boshqa Internet-paketni
-                                                sotib olish yo'li bilan amalga oshiriladi. Umumiy megabaytning
-                                                amal qilish muddati oxirgi paket xarid qilingan kundan boshlab
+                                                @itam.About
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary"
@@ -66,7 +58,7 @@
                                     </div>
                                 </div>
                             </td>
-                            <td>Maneger</td>
+                            <td>@itam.Position</td>
                             <td class="cell">
                                 <a href="../Infos/internet_Info.html">
                                     <span class="btn btn-success">Edite</span>
@@ -96,7 +88,9 @@
                                     </div>
                                 </div>
                             </td>
-                        </tr>
+                    </tr>   
+                    }
+                    
                     </table>
                 </div><!-- /.box-body -->
             </div><!-- /.box -->

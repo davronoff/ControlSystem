@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using ProjectDavomat.Domain;
 
-namespace ProjectDavomat.Data
+namespace ProjectDavomat.Data.DataLayer
 {
     public class AppDbContext: DbContext
     {
@@ -15,6 +15,7 @@ namespace ProjectDavomat.Data
         public DbSet<Staff> staffs { get; set; }
         public DbSet<Service> services { get; set; }
         public DbSet<Course> courses { get; set; }
+        public DbSet<CourseCategory> courseCategories { get; set; }
 
     }
 }

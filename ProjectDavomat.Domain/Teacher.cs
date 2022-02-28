@@ -18,7 +18,8 @@ namespace ProjectDavomat.Domain
         [Required]
         public string Image { get; set; }
         [Required]
-        public MyExperince Experince { get; set; }
+        public string Experince { get; set; }
+        [Required]
         public List<Course> ForSelectCourseName { get; set; }
     }
  }

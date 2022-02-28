@@ -1,7 +1,8 @@
 ﻿@{
     ViewData["Title"] = "Service Page";
     Layout = "_Layout";
-} 
+}
+@model List<Service>
      <div class="row blok mt-5">
         <div class="col-xs-11">
             <div class="box data-table">
@@ -23,14 +24,16 @@
                             <th>Image</th>
                             <th>Action</th>
                         </tr>
-                        <tr>
-                            <td>7339d7c4-d8b2-46b1-a57c-cf081ac83151</td>
-                            <td>C# Web Development</td>
+                    @foreach(var itam in Model)
+                    {
+                      <tr>
+                            <td>@itam.Id</td>
+                            <td>@itam.Name</td>
                             <td>
-                                1 year
+                                @itam.MyService
                             </td>
-                            <td>75$</td>
-                            <td>Some Image</td>
+                            <td>@itam.Price $</td>
+                            <td>@itam.Image</td>
                             <td class="cell">
                                 <a href="../Infos/internet_Info.html">
                                     <span class="btn btn-success">Edite</span>
@@ -60,7 +63,9 @@
                                     </div>
                                 </div>
                             </td>
-                        </tr>
+                        </tr>   
+                    }
+                   
                     </table>
                 </div><!-- /.box-body -->
             </div><!-- /.box -->

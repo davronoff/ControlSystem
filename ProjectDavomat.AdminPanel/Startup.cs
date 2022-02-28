@@ -6,7 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ProjectDavomat.BL.Interface;
 using ProjectDavomat.BL.Repasitory;
-using ProjectDavomat.Data;
+using ProjectDavomat.Data.DataLayer;
 
 namespace ProjectDavomat.AdminPanel
 {

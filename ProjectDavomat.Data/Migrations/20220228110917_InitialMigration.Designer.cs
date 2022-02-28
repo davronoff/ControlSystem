@@ -5,13 +5,13 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
-using ProjectDavomat.Data;
+using ProjectDavomat.Data.DataLayer;
 
 namespace ProjectDavomat.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220222093304_Initial")]
-    partial class Initial
+    [Migration("20220228110917_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,10 +21,28 @@ namespace ProjectDavomat.Data.Migrations
                 .HasAnnotation("ProductVersion", "5.0.14")
                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
+            modelBuilder.Entity("CourseTeacher", b =>
+                {
+                    b.Property<Guid>("ForSelectCourseNameId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("TeacherIdId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("ForSelectCourseNameId", "TeacherIdId");
+
+                    b.HasIndex("TeacherIdId");
+
+                    b.ToTable("CourseTeacher");
+                });
+
             modelBuilder.Entity("ProjectDavomat.Domain.Course", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid?>("CourseCategoryId")
                         .HasColumnType("uuid");
 
                     b.Property<string>("Duration")
@@ -39,12 +57,26 @@ namespace ProjectDavomat.Data.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<Guid>("TeacherId")
+                    b.HasKey("Id");
+
+                    b.HasIndex("CourseCategoryId");
+
+                    b.ToTable("courses");
+                });
+
+            modelBuilder.Entity("ProjectDavomat.Domain.CourseCategory", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
-                    b.ToTable("courses");
+                    b.ToTable("courseCategories");
                 });
 
             modelBuilder.Entity("ProjectDavomat.Domain.Service", b =>
@@ -57,8 +89,9 @@ namespace ProjectDavomat.Data.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("MyService")
-                        .HasColumnType("integer");
+                    b.Property<string>("MyService")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -94,8 +127,9 @@ namespace ProjectDavomat.Data.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("Position")
-                        .HasColumnType("integer");
+                    b.Property<string>("Position")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
@@ -108,11 +142,9 @@ namespace ProjectDavomat.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<int>("Courses")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("Experince")
-                        .HasColumnType("integer");
+                    b.Property<string>("Experince")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -155,6 +187,33 @@ namespace ProjectDavomat.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("students");
+                });
+
+            modelBuilder.Entity("CourseTeacher", b =>
+                {
+                    b.HasOne("ProjectDavomat.Domain.Course", null)
+                        .WithMany()
+                        .HasForeignKey("ForSelectCourseNameId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ProjectDavomat.Domain.Teacher", null)
+                        .WithMany()
+                        .HasForeignKey("TeacherIdId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("ProjectDavomat.Domain.Course", b =>
+                {
+                    b.HasOne("ProjectDavomat.Domain.CourseCategory", null)
+                        .WithMany("ForCategory")
+                        .HasForeignKey("CourseCategoryId");
+                });
+
+            modelBuilder.Entity("ProjectDavomat.Domain.CourseCategory", b =>
+                {
+                    b.Navigation("ForCategory");
                 });
 #pragma warning restore 612, 618
         }
