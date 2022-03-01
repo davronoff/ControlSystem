@@ -12,9 +12,8 @@ namespace ProjectDavomat.Domain
         public string Name { get; set; }
         [Required]
         public string Duration { get; set; }
-        [Required]
-        public List<Teacher> TeacherId { get; set; }
-        [Required]
+        [Required]    
         public string Image { get; set; }
+        public List<Teacher> Teacher { get; set; }
     }
 }
