@@ -37,7 +37,7 @@ namespace ProjectDavomat.BL.Repasitory
         public Task<List<CourseCategory>> GetAllCourseCategoryWithCourse()
         {
             return _courseCategoryservice.courseCategories
-                .Include(p => p.ForCategory).ToListAsync();
+                .Include(p => p.Courses).ToListAsync();
         }
 
         public Task<CourseCategory> GetByIdCourseCategory(Guid id) => _courseCategoryservice.courseCategories.FirstOrDefaultAsync(p => p.Id == id);

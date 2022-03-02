@@ -20,8 +20,8 @@
                             <th>Id</th>
                             <th>Name</th>
                             <th>Duration</th>
-                            <th>TeacherId</th>
                             <th>Image</th>
+                            <th>CourseCategoryId</th>
                             <th>Action</th>
                         </tr>
                     @foreach(var itam in Model)
@@ -55,8 +55,8 @@
                                     </div>
                                 </div>
                             </td>
-                            <td>@itam.Teacher</td>
                             <td>@itam.Image</td>
+                            <td>@itam.CourseCategoryId</td>
                             <td class="cell">
                                 <a href="../Infos/internet_Info.html">
                                     <span class="btn btn-success">Edite</span>

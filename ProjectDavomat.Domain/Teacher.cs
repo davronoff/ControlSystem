@@ -14,11 +14,11 @@ namespace ProjectDavomat.Domain
          [Required]
          public string LastaName { get; set; }
          [Required]
-        public string Skills { get; set; }
-        [Required]
-        public string Image { get; set; }
-        [Required]
-        public string Experince { get; set; }
+         public string Skills { get; set; }
+         [Required]
+         public string Image { get; set; }
+         [Required]
+         public string Experince { get; set; }
 
     }
  }

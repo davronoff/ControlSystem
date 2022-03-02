@@ -12,6 +12,6 @@ namespace ProjectDavomat.Domain
         [Required]
         public string LastName { get; set; }
         [Required]
-        public int Telefonraqam { get; set; }
+        public int PhoneNumber { get; set; }
     }
 }

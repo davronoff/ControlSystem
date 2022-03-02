@@ -1,5 +1,4 @@
-﻿using DavomatProject.Api.ViewModel;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using ProjectDavomat.BL.Interface;
 using ProjectDavomat.Domain;
 using System;
@@ -17,23 +16,12 @@ namespace DavomatProject.Api.Controllers
         {
             _serviceCourse = serviceCourse;
         }
-        [HttpGet, Route("getalljson")]
-        public async Task<IActionResult> GetallJson()
-        {
-            var json = await _serviceCourse.GetAllJson();
-            return Ok(json);
-        }
         [HttpGet, Route("getall")]
         public async Task<IActionResult> Getall()
         {
             
-            var modelList = await _serviceCourse.GetAllCourse();
-            List<CourseViewModel> vlist = new List<CourseViewModel>();
-            foreach (var item in modelList)
-            {
-                vlist.Add((CourseViewModel)item);
-            }
-            return Ok(vlist);
+            var json = await _serviceCourse.GetAllCourse();
+            return Ok(json);
         }
 
         [HttpGet, Route("get/{id}")]

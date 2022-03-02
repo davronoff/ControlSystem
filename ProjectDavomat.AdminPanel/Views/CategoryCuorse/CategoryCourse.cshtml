@@ -1,16 +1,16 @@
 ﻿@{
-    ViewData["Title"] = "Service Page";
+    ViewData["Title"] = "Course Page";
     Layout = "_Layout";
 }
-@model List<Service>
-     <div class="row blok mt-5">
+@model List<CourseCategory>
+    <div class="row blok mt-5">
         <div class="col-xs-11">
             <div class="box data-table">
                 <div class="box-header position-relative table-header mt-2">
                     <div class="d-flex justify-content-between mt-3 mx-4 com-header">
-                        <h3>Service</h3>
-                        <a asp-controller="service" asp-action="addservices">
-                            <span class="btn btn-success"><i class="las la-plus"></i>Add Service</span>
+                        <h3>Course</h3>
+                        <a asp-controller="course" asp-action="addcourses">
+                            <span class="btn btn-success"><i class="las la-plus"></i>Add Course</span>
                         </a>
                     </div>
                 </div>
@@ -19,21 +19,15 @@
                         <tr>
                             <th>Id</th>
                             <th>Name</th>
-                            <th>Service Date</th>
-                            <th>Price</th>
-                            <th>Image</th>
+                            <th>Courses</th>
                             <th>Action</th>
                         </tr>
                     @foreach(var itam in Model)
                     {
-                      <tr>
+                     <tr>
                             <td>@itam.Id</td>
                             <td>@itam.Name</td>
-                            <td>
-                                @itam.LifeTimeService
-                            </td>
-                            <td>@itam.Price $</td>
-                            <td>@itam.Image</td>
+                            <td>@itam.Courses</td>
                             <td class="cell">
                                 <a href="../Infos/internet_Info.html">
                                     <span class="btn btn-success">Edite</span>
@@ -63,9 +57,8 @@
                                     </div>
                                 </div>
                             </td>
-                        </tr>   
+                    </tr>   
                     }
-                   
                     </table>
                 </div><!-- /.box-body -->
             </div><!-- /.box -->

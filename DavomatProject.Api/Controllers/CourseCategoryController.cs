@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DavomatProject.Api.VeiwModel;
+using Microsoft.AspNetCore.Mvc;
 using ProjectDavomat.BL.Interface;
 using ProjectDavomat.Domain;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace DavomatProject.Api.Controllers
@@ -18,7 +20,18 @@ namespace DavomatProject.Api.Controllers
         [HttpGet, Route("getall")]
         public async Task<IActionResult> GetAll()
         {
-            var json = await _serviceCourseCategory.GetAllCourseCategory();
+            var modelList = await _serviceCourseCategory.GetAllCourseCategory();
+            List<CourseCategoryViewModel> vlist = new List<CourseCategoryViewModel>();
+            foreach (var item in modelList)
+            {
+                vlist.Add((CourseCategoryViewModel)item);
+            }
+            return Ok(vlist);
+        }
+        [HttpGet, Route("getalljson")]
+        public async Task<IActionResult> GetAllJson()
+        {
+            var json = await _serviceCourseCategory.GetAllCourseCategoryWithCourse();
             return Ok(json);
         }
         [HttpGet, Route("get/{id}")]
@@ -28,15 +41,15 @@ namespace DavomatProject.Api.Controllers
             return Ok(json);
         }
         [HttpPost, Route("add")]
-        public async Task<IActionResult> Add(CourseCategory newCourseCategory)
+        public async Task<IActionResult> Add(CourseCategoryViewModel newCourseCategory)
         {
-            var json = await _serviceCourseCategory.AddCourseCategory(newCourseCategory);
+            var json = await _serviceCourseCategory.AddCourseCategory((CourseCategory)newCourseCategory);
             return Ok(json);
         }
         [HttpPut, Route("update")]
-        public async Task<IActionResult> Update(CourseCategory courseCategory)
+        public async Task<IActionResult> Update(CourseCategoryViewModel courseCategory)
         {
-            var json = await _serviceCourseCategory.UpdateCourseCategory(courseCategory);
+            var json = await _serviceCourseCategory.UpdateCourseCategory((CourseCategory)courseCategory);
             return Ok(courseCategory);
         }
         [HttpDelete, Route("delete/{id}")]

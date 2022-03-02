@@ -10,9 +10,9 @@ namespace ProjectDavomat.Domain
         [Required]
         public string Name { get; set; }
         [Required]
-        public string MyService { get; set; }
+        public string LifeTimeService { get; set; }
         [Required]
-        public double Price { get; set; }
+        public string Price { get; set; }
         [Required]
         public string Image { get; set; }
     }

@@ -34,12 +34,6 @@ namespace ProjectDavomat.BL.Repasitory
 
         public Task<List<Course>> GetAllCourse() => _dbCourse.courses.ToListAsync();
 
-        public Task<List<Course>> GetAllJson()
-        {
-            return _dbCourse.courses
-            .Include(p => p.Teacher).ToListAsync();
-        }
-
         public Task<Course> GetCourse(Guid id) => _dbCourse.courses.FirstOrDefaultAsync(p => p.Id == id);
 
         public Task<Course> UpdateCourse(Course Course)

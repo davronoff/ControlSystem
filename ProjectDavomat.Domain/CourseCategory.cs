@@ -11,6 +11,7 @@ namespace ProjectDavomat.Domain
         [Required]
         public string Name { get; set; }
         [Required]
-        public List<Course> ForCategory { get; set; }
+        public List<Course> Courses { get; set; }
+
     }
 }
