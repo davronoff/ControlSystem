@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ControlSystem.ViewModels\ControlSystem.ViewModels.csproj" />
     <ProjectReference Include="..\ProjectDavomat.BL\ProjectDavomat.BL.csproj" />
     <ProjectReference Include="..\ProjectDavomat.Data\ProjectDavomat.Data.csproj" />
   </ItemGroup>

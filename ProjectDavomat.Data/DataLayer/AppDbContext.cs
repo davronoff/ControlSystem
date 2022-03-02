@@ -15,6 +15,7 @@ namespace ProjectDavomat.Data.DataLayer
         public DbSet<Staff> staffs { get; set; }
         public DbSet<Service> services { get; set; }
         public DbSet<Course> courses { get; set; }
+        public DbSet<Leader> leaders { get; set; }
         public DbSet<CourseCategory> courseCategories { get; set; }
 
     }

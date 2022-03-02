@@ -19,6 +19,7 @@ namespace ProjectDavomat.BL.Repasitory
         }
         public Task<CourseCategory> AddCourseCategory(CourseCategory newCourseCategory)
         {
+            newCourseCategory.Id = Guid.NewGuid();
             _courseCategoryservice.courseCategories.Add(newCourseCategory);
             _courseCategoryservice.SaveChanges();
             return Task.FromResult(newCourseCategory);
@@ -34,13 +35,19 @@ namespace ProjectDavomat.BL.Repasitory
 
         public Task<List<CourseCategory>> GetAllCourseCategory() => _courseCategoryservice.courseCategories.ToListAsync();
 
-        public Task<List<CourseCategory>> GetAllCourseCategoryWithCourse()
+        public Task<CourseCategory> GetByIdCourseCategory(Guid id)
         {
             return _courseCategoryservice.courseCategories
-                .Include(p => p.Courses).ToListAsync();
+                .Include(p => p.Courses)
+                .FirstOrDefaultAsync(p => p.Id == id);
         }
 
-        public Task<CourseCategory> GetByIdCourseCategory(Guid id) => _courseCategoryservice.courseCategories.FirstOrDefaultAsync(p => p.Id == id);
+        public Task<CourseCategory> GetCourseCategoryByName(string categoryName)
+        {
+            return _courseCategoryservice.courseCategories
+                .Include(c => c.Courses)
+                .FirstOrDefaultAsync(c => c.Name == categoryName);           
+        }
 
         public Task<CourseCategory> UpdateCourseCategory(CourseCategory courseCategory)
         {

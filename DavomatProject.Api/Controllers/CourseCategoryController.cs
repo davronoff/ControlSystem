@@ -1,4 +1,5 @@
 ﻿using DavomatProject.Api.VeiwModel;
+using DavomatProject.VeiwModel;
 using Microsoft.AspNetCore.Mvc;
 using ProjectDavomat.BL.Interface;
 using ProjectDavomat.Domain;
@@ -21,17 +22,17 @@ namespace DavomatProject.Api.Controllers
         public async Task<IActionResult> GetAll()
         {
             var modelList = await _serviceCourseCategory.GetAllCourseCategory();
-            List<CourseCategoryViewModel> vlist = new List<CourseCategoryViewModel>();
+            List<CategoryViewModel> vlist = new List<CategoryViewModel>();
             foreach (var item in modelList)
             {
-                vlist.Add((CourseCategoryViewModel)item);
+                vlist.Add((CategoryViewModel)item);
             }
             return Ok(vlist);
         }
-        [HttpGet, Route("getalljson")]
-        public async Task<IActionResult> GetAllJson()
+        [HttpGet, Route("getone/{courseName}")]
+        public async Task<IActionResult> GetAllJson(string courseName)
         {
-            var json = await _serviceCourseCategory.GetAllCourseCategoryWithCourse();
+            var json = await _serviceCourseCategory.GetCourseCategoryByName(courseName);
             return Ok(json);
         }
         [HttpGet, Route("get/{id}")]
@@ -41,13 +42,13 @@ namespace DavomatProject.Api.Controllers
             return Ok(json);
         }
         [HttpPost, Route("add")]
-        public async Task<IActionResult> Add(CourseCategoryViewModel newCourseCategory)
+        public async Task<IActionResult> Add(CategoryViewModel newCourseCategory)
         {
             var json = await _serviceCourseCategory.AddCourseCategory((CourseCategory)newCourseCategory);
             return Ok(json);
         }
         [HttpPut, Route("update")]
-        public async Task<IActionResult> Update(CourseCategoryViewModel courseCategory)
+        public async Task<IActionResult> Update(CategoryViewModel courseCategory)
         {
             var json = await _serviceCourseCategory.UpdateCourseCategory((CourseCategory)courseCategory);
             return Ok(courseCategory);

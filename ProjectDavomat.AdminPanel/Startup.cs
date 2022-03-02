@@ -30,6 +30,8 @@ namespace ProjectDavomat.AdminPanel
 
             services.AddScoped<ICourseInterface, CourseRepasitory>();
 
+            services.AddScoped<ICourseCategoryInterface, CourseCategoryRepasitory>();
+
             services.AddScoped<IServiceInterface, ServiceRepasitory>();
 
             services.AddDbContext<AppDbContext>(options =>
