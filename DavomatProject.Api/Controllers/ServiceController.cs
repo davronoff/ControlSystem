@@ -50,5 +50,21 @@ namespace DavomatProject.Api.Controllers
             await _serviceService.DeleteService(id);
             return Ok();
         }
+
+        //return count of services
+        [HttpGet, Route("get/count")]
+        public async Task<IActionResult> GetCountOfCourses()
+        {
+            var json = await _serviceService.CountService();
+            return Ok(json);
+        }
+
+        //return random 6 courses
+        [HttpGet, Route("get/random")]
+        public async Task<IActionResult> GetRandomCourses()
+        {
+            var json = await _serviceService.GetRandomService3();
+            return Ok(json);
+        }
     }
 }

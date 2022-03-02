@@ -42,5 +42,27 @@ namespace ProjectDavomat.BL.Repasitory
             _dbCourse.SaveChanges();
             return Task.FromResult(Course);
         }
+
+        //get count of courses
+        public Task<int> CountCourse()
+        {
+            return Task.FromResult(_dbCourse.courses.Count());
+        }
+        
+        //get random 6 courses
+        public Task<List<Course>> GetRandomCourse6()
+        {
+            if (_dbCourse.courses.Count() <= 6)
+            {
+                return _dbCourse.courses.ToListAsync();
+            }
+            else
+            {
+                Random rnd = new Random();
+                _dbCourse.courses.ToList().OrderBy(x => rnd.Next()).Take(6);
+            }
+
+            return null;
+        }
     }
 }

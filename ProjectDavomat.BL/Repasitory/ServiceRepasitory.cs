@@ -42,5 +42,27 @@ namespace ProjectDavomat.BL.Repasitory
             _dbService.SaveChanges();
             return Task.FromResult(Service);
         }
+
+        //get count of services
+        public Task<int> CountService()
+        {
+            return Task.FromResult(_dbService.services.Count());
+        }
+        
+        //get random 3 courses
+        public Task<List<Service>> GetRandomService3()
+        {
+            if (_dbService.services.Count() <= 3)
+            {
+                return _dbService.services.ToListAsync();
+            }
+            else
+            {
+                Random rnd = new Random();
+                _dbService.services.ToList().OrderBy(x => rnd.Next()).Take(3);
+            }
+
+            return null;
+        }
     }
 }

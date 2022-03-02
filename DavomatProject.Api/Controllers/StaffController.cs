@@ -50,5 +50,21 @@ namespace DavomatProject.Api.Controllers
             await _staffSerice.DeleteStaff(id);
             return Ok();
         }
+
+        //return count of staffs
+        [HttpGet, Route("get/count")]
+        public async Task<IActionResult> GetCountOfCourses()
+        {
+            var json = await _staffSerice.CountStaffs();
+            return Ok(json);
+        }
+
+        //return random 3 staffs
+        [HttpGet, Route("get/random")]
+        public async Task<IActionResult> GetRandomCourses()
+        {
+            var json = await _staffSerice.GetRandomStaff3();
+            return Ok(json);
+        }
     }
 }

@@ -43,5 +43,27 @@ namespace ProjectDavomat.BL.Repasitory
             _dbStaff.SaveChanges();
             return Task.FromResult(Staff);
         }
+
+        //get count of staffs
+        public Task<int> CountStaffs()
+        {
+            return Task.FromResult(_dbStaff.staffs.Count());
+        }
+
+        //get random 3 staffs
+        public Task<List<Staff>> GetRandomStaff3()
+        {
+            if (_dbStaff.staffs.Count() <= 3)
+            {
+                return _dbStaff.staffs.ToListAsync();
+            }
+            else
+            {
+                Random rnd = new Random();
+                _dbStaff.staffs.ToList().OrderBy(x => rnd.Next()).Take(3);
+            }
+
+            return null;
+        }
     }
 }

@@ -13,5 +13,8 @@ namespace ProjectDavomat.BL.Interface
         Task<Staff> UpdateStaff(Staff Staff);
         Task DeleteStaff(Guid id);
 
+        Task<int> CountStaffs();
+        Task<List<Staff>> GetRandomStaff3();
+
     }
 }
