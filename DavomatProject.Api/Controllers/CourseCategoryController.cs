@@ -18,7 +18,7 @@ namespace DavomatProject.Api.Controllers
         [HttpGet, Route("getall")]
         public async Task<IActionResult> GetAll()
         {
-            var json = await _serviceCourseCategory.GetAll();
+            var json = await _serviceCourseCategory.GetAllCourseCategory();
             return Ok(json);
         }
         [HttpGet, Route("get/{id}")]

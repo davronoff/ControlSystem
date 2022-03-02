@@ -5,7 +5,6 @@ using ProjectDavomat.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ProjectDavomat.BL.Repasitory
@@ -33,7 +32,13 @@ namespace ProjectDavomat.BL.Repasitory
             return Task.FromResult(0);
         }
 
-        public Task<List<CourseCategory>> GetAll() => _courseCategoryservice.courseCategories.ToListAsync();
+        public Task<List<CourseCategory>> GetAllCourseCategory() => _courseCategoryservice.courseCategories.ToListAsync();
+
+        public Task<List<CourseCategory>> GetAllCourseCategoryWithCourse()
+        {
+            return _courseCategoryservice.courseCategories
+                .Include(p => p.ForCategory).ToListAsync();
+        }
 
         public Task<CourseCategory> GetByIdCourseCategory(Guid id) => _courseCategoryservice.courseCategories.FirstOrDefaultAsync(p => p.Id == id);
 

@@ -16,24 +16,24 @@ namespace DavomatProject.Api.ViewModel
         [Required]    
         public string Image { get; set; }
         public List<Teacher> Teacher { get; set; }
-          public static explicit operator CourseViewModel(Course v)
+          public static explicit operator CourseViewModel(Course model)
         {            
             return  new CourseViewModel()
             {
-                Id = v.Id,
-                Name = v.Name,
-                Duration = v.Duration,
-                Image = v.Image
+                Id = model.Id,
+                Name = model.Name,
+                Duration = model.Duration,
+                Image = model.Image
             };
         }
-         public static explicit operator Course(CourseViewModel v)
+         public static explicit operator Course(CourseViewModel model)
         {
             return new Course()
             {
-                Id = v.Id,
-                Name = v.Name,
-                Duration = v.Duration,
-                Image = v.Image,
+                Id = model.Id,
+                Name = model.Name,
+                Duration = model.Duration,
+                Image = model.Image,
                 Teacher = null
             };
         }

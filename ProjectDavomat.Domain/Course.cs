@@ -14,6 +14,6 @@ namespace ProjectDavomat.Domain
         public string Duration { get; set; }
         [Required]    
         public string Image { get; set; }
-        public List<Teacher> Teacher { get; set; }
+        public Guid CourseCategoryId { get; set; }
     }
 }

@@ -7,7 +7,8 @@ namespace ProjectDavomat.BL.Interface
 {
     public interface ICourseCategoryInterface
     {
-        Task<List<CourseCategory>> GetAll();
+        Task<List<CourseCategory>> GetAllCourseCategory();
+        Task<List<CourseCategory>> GetAllCourseCategoryWithCourse();
         Task<CourseCategory> GetByIdCourseCategory(Guid id);
         Task<CourseCategory> AddCourseCategory(CourseCategory newCourseCategory);
         Task<CourseCategory> UpdateCourseCategory(CourseCategory courseCategory);
