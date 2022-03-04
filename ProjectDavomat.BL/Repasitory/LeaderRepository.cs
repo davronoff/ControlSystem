@@ -32,15 +32,9 @@ namespace ProjectDavomat.BL.Repasitory
             return Task.FromResult(0);
         }
 
-        public Task<List<Leader>> GetAllLeader()
-        {
-            return _dbContext.leaders.ToListAsync();
-        }
+        public Task<List<Leader>> GetAllLeader() => _dbContext.leaders.ToListAsync();
 
-        public Task<Leader> GetLeader(Guid id)
-        {
-            return _dbContext.leaders.FirstOrDefaultAsync(x => x.Id == id);
-        }
+        public Task<Leader> GetLeader(Guid id) => _dbContext.leaders.FirstOrDefaultAsync(p => p.Id == id);
 
         public Task<Leader> UpdateLeader(Leader leader)
         {
