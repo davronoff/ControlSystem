@@ -9,7 +9,7 @@ namespace ProjectDavomat.AdminPanel.Controllers
     public class CourseController : Controller
     {
         private readonly ICourseInterface _courseInterface;
-
+        //some
         public CourseController(ICourseInterface courseInterface)
         {
             _courseInterface = courseInterface;
