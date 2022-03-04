@@ -1,12 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
-using ProjectDavomat.Domain;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace ProjectDavomat.ViewModels
 {
