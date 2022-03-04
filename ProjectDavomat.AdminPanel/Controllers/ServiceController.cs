@@ -17,9 +17,11 @@ namespace ProjectDavomat.AdminPanel.Controllers
             var item = await _serviceInterface.GetAllService();
             return View(item);
         }
+        [HttpGet]
         public async Task<IActionResult> AddServices()
         {
             return View();
         }
+        
     }
 }
