@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.14" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\ProjectDavomat.Domain\ProjectDavomat.Domain.csproj" />
   </ItemGroup>
 
