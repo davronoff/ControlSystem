@@ -58,8 +58,7 @@ namespace ProjectDavomat.BL.Repasitory
             }
             else
             {
-                Random rnd = new Random();
-                _dbCourse.courses.ToList().OrderBy(x => rnd.Next()).Take(6);
+                return _dbCourse.courses.Take(6).ToListAsync();
             }
 
             return null;
