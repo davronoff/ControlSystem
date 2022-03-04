@@ -10,11 +10,9 @@
     </div>
     <form class="mx-4" asp-controller="course" asp-action="addcourses" enctype="multipart/form-data" method="post">
         <select class="form-select mx-4" asp-for="ServiceType"  style="padding: 10px; font-size: 18px;" aria-label="Default select example">
-            <option selected disabled>-- Kategoriya tanlang --</option>
-            @foreach (var item in Model.ServiceType)
-           {
-               <option>@item</option>
-           }
+            <option selected disabled>-- Xizmat turini tanlang --</option>
+           <option selected>Xizmat ko'rsatish</option>
+           <option selected>Ijara</option>
         </select>
         <div class="form-group mx-4" style="padding: 10px; font-size: 18px;">
             <label asp-for="Name">Nomi</label>
