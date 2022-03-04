@@ -12,7 +12,6 @@ namespace ProjectDavomat.BL.Interface
         Task<Service> AddService(Service newService);
         Task<Service> UpdateService(Service Service);
         Task DeleteService(Guid id);
-
         Task<int> CountService();
         Task<List<Service>> GetRandomService3();
     }
