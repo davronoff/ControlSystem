@@ -19,7 +19,7 @@ namespace ProjectDavomat.AdminPanel.Services
             {
                 if (fileName is not null)
                 {
-                    string uplodFolder = Path.Combine(_webHostEnvironment.WebRootPath, "Images");
+                    string uplodFolder = Path.Combine(_webHostEnvironment.WebRootPath, "images");
                     string filePath = Path.Combine(uplodFolder, fileName);
                     FileInfo fileInfo = new FileInfo(filePath);
                     if (fileInfo.Exists)
@@ -41,7 +41,7 @@ namespace ProjectDavomat.AdminPanel.Services
             string uniqueName = string.Empty;
             if (formFile.FileName != null)
             {
-                string uplodFolder = Path.Combine(_webHostEnvironment.WebRootPath, "Images");
+                string uplodFolder = Path.Combine(_webHostEnvironment.WebRootPath, "images");
                 uniqueName = Guid.NewGuid().ToString() + "_" + formFile.FileName;
 
                 string filePath = Path.Combine(uplodFolder, uniqueName);

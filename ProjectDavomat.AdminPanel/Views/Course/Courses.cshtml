@@ -29,7 +29,14 @@
                      <tr>
                             <td>@item.Name</td>
                             <td>@item.Price</td>
-                            <td><img src="@item.Image" asp-append-version="true" style="width: 50px;"/></td>
+                            @{
+                                string imageSource = @item.Image;
+                                if (!imageSource.Contains("http"))
+                                {
+                                    imageSource = "~/images/" + imageSource;
+                                }
+                            }
+                            <td><img src="@imageSource" asp-append-version="true" style="width: 50px;"/></td>
                             <td>@item.Duration</td>
                             <td>
                                 @{
@@ -44,10 +51,10 @@
                             
                             <td class="cell">
                                 <a asp-controller="course" asp-action="edit" asp-route-id="@item.Id">
-                                    <span class="btn btn-success">Edite</span>
+                                    <span class="btn btn-success">Tahrirlash</span>
                                 </a>
                                 <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                    data-bs-target="#deleteModal">Delete</button>
+                                    data-bs-target="#deleteModal">O'chirish</button>
 
                                 <!-- Modal -->
                                 <div class="modal fade" id="deleteModal" tabindex="-1"

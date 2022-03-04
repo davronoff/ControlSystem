@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using ProjectDavomat.AdminPanel.Services;
 using ProjectDavomat.BL.Interface;
 using ProjectDavomat.BL.Repasitory;
 using ProjectDavomat.Data.DataLayer;
@@ -33,6 +34,8 @@ namespace ProjectDavomat.AdminPanel
             services.AddScoped<ICourseCategoryInterface, CourseCategoryRepasitory>();
 
             services.AddScoped<IServiceInterface, ServiceRepasitory>();
+
+            services.AddScoped<IDeleteSaveimageInterface, DeleteSaveimageRepasitory>();
 
             services.AddDbContext<AppDbContext>(options =>
                 options.UseNpgsql(Configuration.GetConnectionString("PostgreDb")));

@@ -2,11 +2,11 @@
     ViewData["Title"] = "AddCourse Page";
     Layout = "_Layout";
 }
-@model Course
+@model EditCourseViewModel
 
-            <div class="box-header position-relative table-header mt-2">
+            <div class="box-header position-relative table-header pt-4">
                 <div class="d-flex justify-content-between mt-3 com-header">
-                    <h3>Add new course</h3>
+                    <h3>Kurs ma'lumotlarini o'zgartirish</h3>
                 </div>
             </div>
             <form asp-controller="course" asp-action="edit" enctype="multipart/form-data">
@@ -24,17 +24,27 @@
                 </div>
                 <div class="form-group mx-4" style="padding: 10px; font-size: 18px;">
                     <label asp-for="Description">Batafsil</label>
-                    <textarea asp-for="Description" class="form-control" id="description" rows="12">@Model.Description</textarea>
+                    <textarea asp-for="Description" class="form-control" id="description" rows="6">@Model.Description</textarea>
                 </div>
                 <input type="hidden" asp-for="Image" value="@Model.Image"/>
+                    @{
+                        string imageSource = @Model.Image;
+                        if (!imageSource.Contains("http"))
+                        {
+                            imageSource = "~/images/" + imageSource;
+                        }
+                    }
+
+                <div class="form-group mx-4" style="padding: 10px; font-size: 18px;">
+                    <label asp-for="@Model.Image">Kurs rasmi</label> <br />
+                    <img src="@imageSource" style="width: 200px;" asp-for="@Model.Image" asp-append-version="true"/>
+                </div>
                 <input type="hidden" asp-for="CourseCategoryId" value="@Model.CourseCategoryId"/>
-
-
-                @*<div class="input-group mx-4 "style="padding: 10px; font-size: 18px;">
-                    <input type="file" class="form-control" id="inputGroupFile02">
-                    <label class="input-group-text" for="inputGroupFile02"></label>
-                </div>*@
-                    <div class="button-group text-center">
+                <label asp-for="NewImage" class="mx-4" style="padding: 10px; font-size: 18px;">Yangi rasm tanlash</label>
+                <div class="input-group mx-4" style="padding: 10px; font-size: 18px;">
+                    <input type="file" asp-for="NewImage" accept="image/*" class="form-control" id="inputGroupFile02">
+                </div>
+                    <div class="button-group text-center my-5">
                     <button type="submit" class="btn btn-success me-5" style=" width:200px; " >
                         Saqlash
                     </button>
