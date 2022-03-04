@@ -1,0 +1,43 @@
+﻿@{
+    ViewData["Title"] = "AddCourse Page";
+    Layout = "_Layout";
+}
+@model Staff
+
+            <div class="box-header position-relative table-header mt-2">
+                <div class="d-flex justify-content-between mt-3 com-header">
+                    <h3>Add new course</h3>
+                </div>
+            </div>
+            <form asp-controller="service" asp-action="edit" enctype="multipart/form-data">
+                <div class="form-group mx-4" style="padding: 10px; font-size: 18px;">
+                    <label asp-for="FirstName">FirstName</label>
+                    <input asp-for="FirstName" type="text" class="form-control" id="title" value="@Model.FirstName">
+                </div>
+                <div class="form-group mx-4" style="padding: 10px; font-size: 18px;">
+                    <label asp-for="LastName">LastName</label>
+                    <input asp-for="LastName" type="text" class="form-control" id="title" value="@Model.LastName">
+                </div>
+                <input type="hidden" asp-for="Image" value="@Model.Image"/>
+                @*<div class="input-group mx-4 "style="padding: 10px; font-size: 18px;">
+                    <input type="file" class="form-control" id="inputGroupFile02">
+                    <label class="input-group-text" for="inputGroupFile02"></label>
+                </div>*@
+                <div class="form-group mx-4" style="padding: 10px; font-size: 18px;">
+                    <label asp-for="About">Batafsil</label>
+                    <textarea asp-for="About" class="form-control" id="description" rows="12">@Model.About</textarea>
+                </div>
+                 <div class="form-group mx-4" style="padding: 10px; font-size: 18px;">
+                    <label asp-for="Position">Davomiyligi</label>
+                    <input asp-for="Position" type="text" class="form-control" id="title" value="@Model.Position">
+                </div>
+                @*Save, Cancel Button*@
+                    <div class="button-group text-center">
+                    <button type="submit" class="btn btn-success me-5" style=" width:200px; " >
+                        Saqlash
+                    </button>
+                    <a asp-controller="" asp-action="">
+                        <span class="btn btn-info"  style=" width:200px;">Bekor qilish</span>
+                    </a>
+                </div>
+            </form>

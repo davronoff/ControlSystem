@@ -17,25 +17,23 @@
                 <div class="jadval box-body table-responsive no-padding">
                     <table class="table table-hover">
                         <tr>
-                            <th>Id</th>
-                            <th>Name</th>
-                            <th>Service Date</th>
-                            <th>Price</th>
-                            <th>Image</th>
+                            <th>Nomi</th>
+                            <th>Davomiyligi</th>
+                            <th>Narxi</th>
+                            <th>Rasm</th>
                             <th>Action</th>
                         </tr>
-                    @foreach(var itam in Model)
+                    @foreach(var item in Model)
                     {
                       <tr>
-                            <td>@itam.Id</td>
-                            <td>@itam.Name</td>
+                            <td>@item.Name</td>
                             <td>
-                                @itam.LifeTimeService
+                                @item.LifeTimeService
                             </td>
-                            <td>@itam.Price $</td>
-                            <td>@itam.Image</td>
+                            <td>@item.Price</td>
+                            <td><img src="@item.Image" asp-append-version="true" style="width: 50px;"/></td>
                             <td class="cell">
-                                <a href="../Infos/internet_Info.html">
+                                <a asp-controller="" asp-action="" >
                                     <span class="btn btn-success">Edite</span>
                                 </a>
                                 <button type="button" class="btn btn-danger" data-bs-toggle="modal"

@@ -17,21 +17,19 @@
                 <div class="jadval box-body table-responsive no-padding">
                     <table class="table table-hover">
                         <tr>
-                            <th>Id</th>
-                            <th>FName</th>
-                            <th>LName</th>
-                            <th>Image</th>
-                            <th>Aboute</th>
-                            <th>Position</th>
+                            <th>Ismi</th>
+                            <th>Familiyasi</th>
+                            <th>Rasmi</th>
+                            <th>Batafsil</th>
+                            <th>Lavozimi</th>
                             <th>Action</th>
                         </tr>
-                        @foreach (var itam in Model)
+                        @foreach (var item in Model)
                     {
                      <tr>
-                            <td>@itam.Id</td>
-                            <td>@itam.FirstName</td>
-                            <td>@itam.LastName</td>
-                            <td>@itam.Image</td>
+                            <td>@item.FirstName</td>
+                            <td>@item.LastName</td>
+                            <td><img src="@item.Image" asp-append-version="true" style="width: 50px;"/></td>
                             <td>
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                     data-bs-target="#infoModal">Aboute</button>
@@ -48,7 +46,7 @@
                                                     aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                @itam.About
+                                                @item.About
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary"
@@ -58,9 +56,9 @@
                                     </div>
                                 </div>
                             </td>
-                            <td>@itam.Position</td>
+                            <td>@item.Position</td>
                             <td class="cell">
-                                <a href="../Infos/internet_Info.html">
+                                <a asp-controller="" asp-action="">
                                     <span class="btn btn-success">Edite</span>
                                 </a>
                                 <button type="button" class="btn btn-danger" data-bs-toggle="modal"

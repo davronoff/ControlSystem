@@ -3,41 +3,42 @@
     Layout = "_Layout";
 }
 @model Course
-            <div class="box-header position-relative table-header mt-2">
-                <div class="d-flex justify-content-between mt-3 com-header">
-                    <h3>Add new course</h3>
-                </div>
-            </div>
-            <form class="mx-4" asp-controller="category" asp-action="add" method="post">
-                <div class="form-group mx-4" style="padding: 10px; font-size: 18px;">
-                    <label asp-for="Price">Price</label>
-                    <input type="text" class="form-control" id="title" placeholder="Packet title">
-                </div>
-                <div class="form-group mx-4" style="padding: 10px; font-size: 18px;">
-                    <label asp-for="Name">Name</label>
-                </div>
-                <div class="form-group mx-4" style="padding: 10px; font-size: 18px;">
-                    <label asp-for="Duration">Duration</label>
-                    <input type="text" class="form-control" id="title" placeholder="Packet title">
-                </div>
-                <div class="form-group mx-4" style="padding: 10px; font-size: 18px;">
-                    <label for="description">Description</label>
-                    <textarea class="form-control" id="description" placeholder="Course duration" rows="12"></textarea>
-                </div>
-                <div class="input-group mx-4 "style="padding: 10px; font-size: 18px;">
-                    <input type="file" asp-for="Image" class="form-control" id="inputGroupFile02">
-                    <label class="input-group-text" for="inputGroupFile02"></label>
-                </div>
-                <select class="form-select" aria-label="Default select example">
-                  <option selected>Category</option>
-                  <option value="@Model.CourseCategoryId">One</option>
-                </select>
-                <div class="button-group">
-                    <a asp-controller="" asp-action="" style="margin-left:570px; width:200px;">
-                        <span class="btn btn-success" style=" width:200px;">Saqlash</span>
-                    </a>
-                    <a asp-controller="" asp-action="">
-                        <span class="btn btn-info" style=" width:200px;">Bekor qilish</span>
-                    </a>
-                </div>
-            </form>
+    <div class="box-header position-relative table-header mt-2">
+        <div class="d-flex justify-content-between mt-3 com-header">
+            <h3>Yangi kurs qoshish</h3>
+        </div>
+    </div>
+    <form class="mx-4" asp-controller="course" asp-action="addcourses" method="post">
+        <div class="form-group mx-4" style="padding: 10px; font-size: 18px;">
+            <label asp-for="Price">Price</label>
+            <input asp-for="Price" type="text" class="form-control" id="title" placeholder="Packet title">
+        </div>
+        <div class="form-group mx-4" style="padding: 10px; font-size: 18px;">
+            <label asp-for="Name">Name</label>
+        </div>
+        <div class="form-group mx-4" style="padding: 10px; font-size: 18px;">
+            <label asp-for="Duration">Duration</label>
+            <input asp-for="Duration" type="text" class="form-control" id="title" placeholder="Packet title">
+        </div>
+        <div class="form-group mx-4" style="padding: 10px; font-size: 18px;">
+            <label for="description">Description</label>
+            <textarea class="form-control" id="description" placeholder="Course duration" rows="12"></textarea>
+        </div>
+        <div class="input-group mx-4 "style="padding: 10px; font-size: 18px;">
+            <input type="file" asp-for="Image" class="form-control" id="inputGroupFile02">
+            <label asp-for="Image" class="input-group-text" for="inputGroupFile02"></label>
+        </div>
+        <select class="form-select" aria-label="Default select example">
+            <option selected>-- Select Category --</option>
+            <option value="@Model.CourseCategoryId">One</option>
+        </select>
+        @*Save, Cancel Button*@
+        <div class="button-group">
+            <a asp-controller="" asp-action="" style="margin-left:570px; width:200px;">
+                <span class="btn btn-success" style=" width:200px;">Saqlash</span>
+            </a>
+            <a asp-controller="" asp-action="">
+                <span class="btn btn-info" style=" width:200px;">Bekor qilish</span>
+            </a>
+        </div>
+    </form>
