@@ -8,6 +8,8 @@ namespace ProjectDavomat.Domain
         [Required, Key]
         public Guid Id { get; set; }
         [Required]
+        public string ServiceType { get; set; }
+        [Required]
         public string Name { get; set; }
         [Required]
         public string LifeTimeService { get; set; }
