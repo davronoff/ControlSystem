@@ -40,10 +40,13 @@ namespace DavomatProject.Api
                 options.UseNpgsql(Configuration.GetConnectionString("PostgreDb")));
 
             services.AddControllers();
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "DavomatProject.Api", Version = "v1" });
-            });
+
+            services.AddCors();
+
+            //services.AddSwaggerGen(c =>
+            //{
+            //    c.SwaggerDoc("v1", new OpenApiInfo { Title = "DavomatProject.Api", Version = "v1" });
+            //});
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -61,6 +64,13 @@ namespace DavomatProject.Api
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseCors(builder => builder
+                .AllowAnyHeader()
+                .AllowAnyMethod()
+                .SetIsOriginAllowed((host) => true)
+                .AllowCredentials()
+            );
 
             app.UseEndpoints(endpoints =>
             {
