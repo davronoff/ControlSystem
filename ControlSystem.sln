@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectDavomat.BL", "Projec
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectDavomat.AdminPanel", "ProjectDavomat.AdminPanel\ProjectDavomat.AdminPanel.csproj", "{3EA7BAB3-9ECF-4008-A8F3-BE5611A66439}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlSystem.ViewModels", "ControlSystem.ViewModels\ControlSystem.ViewModels.csproj", "{2D86C136-34E0-4C74-BD85-D67C7F7903DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectDavomat.ViewModels", "ControlSystem.ViewModels\ProjectDavomat.ViewModels.csproj", "{2D86C136-34E0-4C74-BD85-D67C7F7903DA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

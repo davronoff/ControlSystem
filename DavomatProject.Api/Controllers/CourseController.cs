@@ -2,7 +2,6 @@
 using ProjectDavomat.BL.Interface;
 using ProjectDavomat.Domain;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace DavomatProject.Api.Controllers

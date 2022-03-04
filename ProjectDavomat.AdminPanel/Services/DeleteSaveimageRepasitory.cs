@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Http;
 using System;
 using System.IO;
 
-namespace ProjectDavomat.WebSite.Services
+namespace ProjectDavomat.AdminPanel.Services
 {
     public class DeleteSaveimageRepasitory : IDeleteSaveimageInterface
     {

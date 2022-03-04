@@ -1,5 +1,4 @@
-﻿using DavomatProject.Api.VeiwModel;
-using DavomatProject.VeiwModel;
+﻿using ProjectDavomat.VeiwModel;
 using Microsoft.AspNetCore.Mvc;
 using ProjectDavomat.BL.Interface;
 using ProjectDavomat.Domain;

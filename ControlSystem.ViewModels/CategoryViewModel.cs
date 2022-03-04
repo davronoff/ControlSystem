@@ -1,7 +1,7 @@
 ﻿using ProjectDavomat.Domain;
 using System;
 
-namespace DavomatProject.VeiwModel
+namespace ProjectDavomat.VeiwModel
 {
     public class CategoryViewModel
     {

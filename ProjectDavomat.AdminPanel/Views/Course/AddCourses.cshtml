@@ -2,14 +2,15 @@
     ViewData["Title"] = "AddCourse Page";
     Layout = "_Layout";
 }
+@Model
             <div class="box-header position-relative table-header mt-2">
                 <div class="d-flex justify-content-between mt-3 com-header">
                     <h3>Add new course</h3>
                 </div>
             </div>
-            <form>
+            <form class="mx-4" asp-controller="category" asp-action="add" method="post">
                 <div class="form-group mx-4" style="padding: 10px; font-size: 18px;">
-                    <label for="title">Name</label>
+                    <label asp-for="Name">Name</label>
                     <input type="text" class="form-control" id="title" placeholder="Packet title">
                 </div>
                 <div class="form-group mx-4" style="padding: 10px; font-size: 18px;">

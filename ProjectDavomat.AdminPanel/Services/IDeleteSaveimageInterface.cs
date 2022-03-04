@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 
-namespace ProjectDavomat.WebSite.Services
+namespace ProjectDavomat.AdminPanel.Services
 {
     public interface IDeleteSaveimageInterface
     {
