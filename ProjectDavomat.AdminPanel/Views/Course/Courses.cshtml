@@ -67,12 +67,12 @@
                                                     aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <h4>Are you realy want delete this course?</h4>
+                                                <h4>Rostdan ham bu kursni o'chirmoqchimisiz?</h4>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-bs-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary">I am sure</button>
+                                                <button type="button" data-bs-dismiss="modal" class="btn btn-secondary">Yo'q</button>
+                                                <a asp-controller="course" asp-action="delete" asp-route-id="@item.Id" class="btn btn-primary"
+                                                    >Ha</a>
                                             </div>
                                         </div>
                                     </div>

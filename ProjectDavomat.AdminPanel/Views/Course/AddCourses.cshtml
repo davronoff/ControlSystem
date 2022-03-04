@@ -2,43 +2,46 @@
     ViewData["Title"] = "AddCourse Page";
     Layout = "_Layout";
 }
-@model Course
+@model AddCourseViewModel
     <div class="box-header position-relative table-header mt-2">
         <div class="d-flex justify-content-between mt-3 com-header">
             <h3>Yangi kurs qoshish</h3>
         </div>
     </div>
-    <form class="mx-4" asp-controller="course" asp-action="addcourses" method="post">
+    <form class="mx-4" asp-controller="course" asp-action="addcourses" enctype="multipart/form-data" method="post">
         <div class="form-group mx-4" style="padding: 10px; font-size: 18px;">
-            <label asp-for="Price">Price</label>
-            <input asp-for="Price" type="text" class="form-control" id="title" placeholder="Packet title">
+            <label asp-for="Name">Nomi</label>
+            <input asp-for="Name" type="text" class="form-control" id="title" placeholder="Kurs nomi">
         </div>
         <div class="form-group mx-4" style="padding: 10px; font-size: 18px;">
-            <label asp-for="Name">Name</label>
+            <label asp-for="Price">Narxi</label>
+            <input asp-for="Price" type="text" class="form-control" id="title" placeholder="Kurs narxi">
         </div>
         <div class="form-group mx-4" style="padding: 10px; font-size: 18px;">
-            <label asp-for="Duration">Duration</label>
-            <input asp-for="Duration" type="text" class="form-control" id="title" placeholder="Packet title">
+            <label asp-for="Duration">Davomiyligi</label>
+            <input asp-for="Duration" type="text" class="form-control" id="title" placeholder="Kurs davomiyligi">
         </div>
         <div class="form-group mx-4" style="padding: 10px; font-size: 18px;">
-            <label for="description">Description</label>
-            <textarea class="form-control" id="description" placeholder="Course duration" rows="12"></textarea>
+            <label asp-for="Description">Batafsil</label>
+            <textarea class="form-control" id="description" asp-for="Description" rows="6"></textarea>
         </div>
+            <label asp-for="Image" class="input-group-text mx-4" for="inputGroupFile02"  style="padding: 10px; font-size: 18px;">Rasm</label>
         <div class="input-group mx-4 "style="padding: 10px; font-size: 18px;">
-            <input type="file" asp-for="Image" class="form-control" id="inputGroupFile02">
-            <label asp-for="Image" class="input-group-text" for="inputGroupFile02"></label>
+            <input type="file" asp-for="Image" accept="image/*" class="form-control" id="inputGroupFile02">
         </div>
-        <select class="form-select" aria-label="Default select example">
-            <option selected>-- Select Category --</option>
-            <option value="@Model.CourseCategoryId">One</option>
+        <select class="form-select mx-4" asp-for="CourseCategoryName"  style="padding: 10px; font-size: 18px;" aria-label="Default select example">
+            <option selected disabled>-- Kategoriya tanlang --</option>
+            @foreach (string item in Model.Categories)
+           {
+               <option>@item</option>
+           }
         </select>
-        @*Save, Cancel Button*@
-        <div class="button-group">
-            <a asp-controller="" asp-action="" style="margin-left:570px; width:200px;">
-                <span class="btn btn-success" style=" width:200px;">Saqlash</span>
+        <div class="button-group text-center my-5">
+            <button type="submit" class="btn btn-success me-5" style=" width:200px; " >
+                Saqlash
+            </button>
+            <a asp-controller="course" asp-action="courses">
+                <span class="btn btn-info"  style=" width:200px;">Bekor qilish</span>
             </a>
-            <a asp-controller="" asp-action="">
-                <span class="btn btn-info" style=" width:200px;">Bekor qilish</span>
-            </a>
-        </div>
+         </div>
     </form>
