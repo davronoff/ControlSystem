@@ -32,30 +32,14 @@
                             <td><img src="@item.Image" asp-append-version="true" style="width: 50px;"/></td>
                             <td>@item.Duration</td>
                             <td>
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                    data-bs-target="#infoModal">Duration</button>
-
-                                <!-- Modal -->
-                                <div class="modal fade" id="infoModal" tabindex="-1"
-                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel"> Full duration
-                                                    </h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                               @item.Description
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-bs-dismiss="modal">Close</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                @{
+                                    string text = item.Description;
+                                    if (text.Length > 15)
+                                    {
+                                       text = item.Description.Substring(0, 15);
+                                    }
+                                }
+                                @text...
                             </td>
                             
                             <td class="cell">
@@ -68,7 +52,7 @@
                                 <!-- Modal -->
                                 <div class="modal fade" id="deleteModal" tabindex="-1"
                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-scrollable">
+                                    <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h5 class="modal-title" id="exampleModalLabel">Alert</h5>
