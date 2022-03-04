@@ -13,8 +13,8 @@ namespace ProjectDavomat.Domain
         public string Name { get; set; }
         [Required]
         public string Duration { get; set; }
-        [Required]
-        public string Description{ get; set; }
+        //[Required]
+        //public string Description{ get; set; }
         [Required]    
         public string Image { get; set; }
         public Guid CourseCategoryId { get; set; }
