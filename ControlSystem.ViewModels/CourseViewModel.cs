@@ -29,22 +29,22 @@ namespace ProjectDavomat.ViewModels
         {
             return new CourseViewModel()
             {
+                Id = model.Id,
+                Price = model.Price,
+                Name = model.Name,
+                Duration = model.Duration,
+                Description = model.Description
+            };
+        }
+        public static explicit operator Course(CourseViewModel model)
+        {
+            return new Course()
+            {
                 Id = Guid.NewGuid(),
                 Price = model.Price,
                 Name = model.Name,
                 Duration = model.Duration,
                 Description = model.Description,
-
-
-            };
-        }
-        public static explicit operator Course(CourseViewModel model)
-        {
-            return new CourseCategory()
-            {
-                Id = model.Id,
-                Name = model.Name,
-                Courses = null
             };
         }
     }
