@@ -17,5 +17,7 @@ namespace ProjectDavomat.Domain
         public string LastName { get; set;}
         [Required]
         public string Position { get; set; }
+        [Required]
+        public string Image { get; set; }
     }
 }

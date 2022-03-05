@@ -59,10 +59,8 @@ namespace ProjectDavomat.BL.Repasitory
             else
             {
                 Random rnd = new Random();
-                _dbService.services.ToList().OrderBy(x => rnd.Next()).Take(3);
+                return _dbService.services.Take(3).ToListAsync();
             }
-
-            return null;
         }
     }
 }

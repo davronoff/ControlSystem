@@ -48,7 +48,7 @@ namespace ProjectDavomat.AdminPanel.Services
 
                 string filePath = Path.Combine(uplodFolder, uniqueName);
                 FileStream fileStream = new FileStream(filePath, FileMode.Create);
-                formFile.CopyToAsync(fileStream);
+                formFile.CopyTo(fileStream);
                 fileStream.Close();
             }
 
