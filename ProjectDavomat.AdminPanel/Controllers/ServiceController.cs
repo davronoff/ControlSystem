@@ -19,16 +19,10 @@ namespace ProjectDavomat.AdminPanel.Controllers
             _serviceInterface = serviceInterface;
             _deleteSaveimage = deleteSaveimage;
         }
-        public  async Task<IActionResult> Services()
+        public  IActionResult Services()
         {
-            var viewModel = await _serviceInterface.GetAllService();
-            List<AddServiceViewModel> viewModels = new List<AddServiceViewModel>();
-            foreach (var item in viewModels)
-            {
-                viewModels.Add((AddServiceViewModel)item);
-            }
-
-            return View(viewModels);
+            var item = _serviceInterface.GetAllService();
+            return View(item);
             
         }
         [HttpGet]
@@ -42,8 +36,7 @@ namespace ProjectDavomat.AdminPanel.Controllers
         {
             var item = _serviceInterface.GetAllService();
             AddCourseViewModel newService = new AddCourseViewModel();
-            {
-                
+            {  
             }
             return RedirectToAction("Service");
         }
