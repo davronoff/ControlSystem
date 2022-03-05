@@ -54,7 +54,7 @@ namespace ProjectDavomat.AdminPanel.Controllers
             var item = await _serviceInterface.GetService(id);
             return View((EditServiceViewModel)item);
         }
-        [HttpPost]
+        //[HttpPost]
         //public async Task<IActionResult> Edit(EditCourseViewModel viewModel)
         //{
         //    if (viewModel.NewImage is not null)
@@ -66,10 +66,13 @@ namespace ProjectDavomat.AdminPanel.Controllers
         //    var item = await _serviceInterface.UpdateService((Service)viewModel);
         //    return RedirectToAction("Service");
         //}
-        public IActionResult Delete(Guid id)
+        [HttpGet]
+        public async Task<IActionResult> Delete(Guid id)
         {
-            _serviceInterface.DeleteService(id);
-            return RedirectToAction("Service");
+            var course = await _serviceInterface.GetService(id);
+            _deleteSaveimage.DeleteImage(course.Image);
+            await _serviceInterface.DeleteService(id);
+            return RedirectToAction("Services");
         }
 
     }

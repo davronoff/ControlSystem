@@ -17,6 +17,7 @@
                 <div class="jadval box-body table-responsive no-padding">
                     <table class="table table-hover">
                         <tr>
+                            <th>Ijara turi</th>
                             <th>Nomi</th>
                             <th>Davomiyligi</th>
                             <th>Narxi</th>
@@ -26,23 +27,31 @@
                     @foreach(var item in Model)
                     {
                       <tr>
+                          <th>@item.ServiceType</th>
                             <td>@item.Name</td>
                             <td>
                                 @item.LifeTimeService
                             </td>
-                            <td>@item.Price</td>
-                            <td><img src="@item.Image" asp-append-version="true" style="width: 50px;"/></td>
+                            <td>@item.Price</td>                            
+                            @{
+                                string imageSource = @item.Image;
+                                if (!imageSource.Contains("http"))
+                                {
+                                    imageSource = "~/images/" + imageSource;
+                                }
+                            }
+                            <td><img src="@imageSource" asp-append-version="true" style="width: 50px;"/></td>
                             <td class="cell">
                                 <a asp-controller="service" asp-action="edit" >
                                     <span class="btn btn-success">Edite</span>
                                 </a>
-                                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                    data-bs-target="#deleteModal">Delete</button>
+                             <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                    data-bs-target="#deleteModal">O'chirish</button>
 
                                 <!-- Modal -->
                                 <div class="modal fade" id="deleteModal" tabindex="-1"
                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-scrollable">
+                                    <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h5 class="modal-title" id="exampleModalLabel">Alert</h5>
@@ -50,12 +59,12 @@
                                                     aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <h4>Are you realy want delete this course?</h4>
+                                                <h4>Rostdan ham bu xizmatni o'chirmoqchimisiz?</h4>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-bs-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary">I am sure</button>
+                                                <button type="button" data-bs-dismiss="modal" class="btn btn-secondary">Yo'q</button>
+                                                <a asp-controller="service" asp-action="delete" asp-route-id="@item.Id" class="btn btn-primary"
+                                                    >Ha</a>
                                             </div>
                                         </div>
                                     </div>

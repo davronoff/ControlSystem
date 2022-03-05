@@ -17,9 +17,10 @@ namespace ProjectDavomat.ViewModels
         public string LifeTimeService { get; set; }
         [Required]
         public string Price { get; set; }
+        public IFormFile NewImage { get; set; }
         [Required]
         public string Image { get; set; }
-        public IFormFile NewImage { get; set; }
+
 
         public static explicit operator EditServiceViewModel(Service model)
         {
