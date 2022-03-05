@@ -17,5 +17,15 @@ namespace ProjectDavomat.Domain
         public string Price { get; set; }
         [Required]
         public string Image { get; set; }
+
+        public static explicit operator Service(ProjectDavomat.ViewModels.EditCourseViewModel v)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static explicit operator Service(ProjectDavomat.ViewModels.EditCourseViewModel v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

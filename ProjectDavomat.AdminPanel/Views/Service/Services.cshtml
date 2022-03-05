@@ -2,7 +2,7 @@
     ViewData["Title"] = "Service Page";
     Layout = "_Layout";
 }
-@model List<AddServiceViewModel>
+@model List<Service>
      <div class="row blok mt-5">
         <div class="col-xs-11">
             <div class="box data-table">
@@ -33,7 +33,7 @@
                             <td>@item.Price</td>
                             <td><img src="@item.Image" asp-append-version="true" style="width: 50px;"/></td>
                             <td class="cell">
-                                <a asp-controller="" asp-action="" >
+                                <a asp-controller="service" asp-action="edit" >
                                     <span class="btn btn-success">Edite</span>
                                 </a>
                                 <button type="button" class="btn btn-danger" data-bs-toggle="modal"

@@ -5,10 +5,10 @@
 @model AddServiceViewModel
    <div class="box-header position-relative table-header mt-2">
         <div class="d-flex justify-content-between mt-3 com-header">
-            <h3>Yangi kurs qoshish</h3>
+            <h3>Yangi xizmatlar qo'shish</h3>
         </div>
     </div>
-    <form class="mx-4" asp-controller="course" asp-action="addcourses" enctype="multipart/form-data" method="post">
+    <form class="mx-4" asp-controller="service" asp-action="addservices" enctype="multipart/form-data" method="post">
         <select class="form-select mx-4" asp-for="ServiceType"  style="padding: 10px; font-size: 18px;" aria-label="Default select example">
             <option selected disabled>-- Xizmat turini tanlang --</option>
            <option selected>Xizmat ko'rsatish</option>
@@ -34,7 +34,7 @@
             <button type="submit" class="btn btn-success me-5" style=" width:200px; " >
                 Saqlash
             </button>
-            <a asp-controller="course" asp-action="courses">
+            <a asp-controller="service" asp-action="services">
                 <span class="btn btn-info"  style=" width:200px;">Bekor qilish</span>
             </a>
          </div>

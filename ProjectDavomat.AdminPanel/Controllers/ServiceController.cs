@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProjectDavomat.AdminPanel.Services;
 using ProjectDavomat.BL.Interface;
+using ProjectDavomat.Domain;
 using ProjectDavomat.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -19,25 +20,50 @@ namespace ProjectDavomat.AdminPanel.Controllers
             _serviceInterface = serviceInterface;
             _deleteSaveimage = deleteSaveimage;
         }
-        public  IActionResult Services()
+        public async Task<IActionResult> Services()
         {
-            var item = _serviceInterface.GetAllService();
+            var item = await _serviceInterface.GetAllService();
             return View(item);
             
         }
         [HttpGet]
-        public  IActionResult AddServices()
+        public IActionResult AddServices()
         {
-            var item = _serviceInterface.GetAllService();
-            return View(item);
+            return View();
         }
         [HttpPost]
-        public async Task<IActionResult> AddService(AddServiceViewModel newViewModel)
+        public async Task<IActionResult> AddServices(AddServiceViewModel newViewModel)
         {
-            var item = _serviceInterface.GetAllService();
-            AddCourseViewModel newService = new AddCourseViewModel();
-            {  
+            Service service = new Service()
+            {
+                Id = Guid.NewGuid(),
+                ServiceType = newViewModel.ServiceType,
+                Name = newViewModel.Name,
+                LifeTimeService = newViewModel.LifeTimeService,
+                Price = newViewModel.Price,
+                Image = _deleteSaveimage.SaveImage(newViewModel.Image)
+
+            };
+            await _serviceInterface.AddService(service);
+
+            return RedirectToAction("Services");
+        }
+        [HttpGet]
+        public async Task<IActionResult> Edit(Guid id)
+        {
+            var item = await _serviceInterface.GetService(id);
+            return View((EditServiceViewModel)item);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Edit(EditCourseViewModel viewModel)
+        {
+            if (viewModel.NewImage is not null)
+            {
+                _deleteSaveimage.DeleteImage(viewModel.Image);
+                viewModel.Image = _deleteSaveimage.SaveImage(viewModel.NewImage);
             }
+
+            var item = await _serviceInterface.UpdateService((Service)viewModel);
             return RedirectToAction("Service");
         }
         public IActionResult Delete(Guid id)
@@ -45,23 +71,6 @@ namespace ProjectDavomat.AdminPanel.Controllers
             _serviceInterface.DeleteService(id);
             return RedirectToAction("Service");
         }
-        //[HttpGet]
-        //public async Task<IActionResult> Edit(Guid id)
-        //{
-        //    AddServiceViewModel viewModel = (AddServiceViewModel)await _serviceInterface.GetService(id);
-        //    return View(viewModel);
-        //}
-        //[HttpPost]
-        //public async Task<IActionResult> Edit(AddServiceViewModel _editViewModel)
-        //{
-        //    if (_editViewModel.NewImage is not null)
-        //    {
-        //        _deleteSaveimage.DeleteImage(_editViewModel.Image);
-        //        _editViewModel.Image = _deleteSaveimage.SaveImage(_editViewModel.NewImage);
-        //    }
 
-        //    var item = await _serviceInterface.UpdateService((Service)_editViewModel);
-        //    return RedirectToAction("Service");
-        //}
     }
 }

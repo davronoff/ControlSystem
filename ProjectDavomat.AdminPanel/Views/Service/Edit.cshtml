@@ -1,15 +1,19 @@
 ﻿@{
-    ViewData["Title"] = "AddCourse Page";
+    ViewData["Title"] = "AddService Page";
     Layout = "_Layout";
 }
-@model Service
+@model EditServiceViewModel
 
-            <div class="box-header position-relative table-header mt-2">
+            <div class="box-header position-relative table-header pt-4">
                 <div class="d-flex justify-content-between mt-3 com-header">
-                    <h3>Add new course</h3>
+                    <h3>Kurs ma'lumotlarini o'zgartirish</h3>
                 </div>
             </div>
             <form asp-controller="service" asp-action="edit" enctype="multipart/form-data">
+                 <div class="form-group mx-4" style="padding: 10px; font-size: 18px;">
+                    <label asp-for="ServiceType">Nomi</label>
+                    <input asp-for="ServiceType" type="text" class="form-control" id="title" value="@Model.ServiceType">
+                </div>
                 <div class="form-group mx-4" style="padding: 10px; font-size: 18px;">
                     <label asp-for="Name">Nomi</label>
                     <input asp-for="Name" type="text" class="form-control" id="title" value="@Model.Name">
@@ -18,21 +22,30 @@
                     <label asp-for="LifeTimeService">Davomiyligi</label>
                     <input asp-for="LifeTimeService" type="text" class="form-control" id="title" value="@Model.LifeTimeService">
                 </div>
-                 <div class="form-group mx-4" style="padding: 10px; font-size: 18px;">
+                <div class="form-group mx-4" style="padding: 10px; font-size: 18px;">
                     <label asp-for="Price">Narxi</label>
                     <input asp-for="Price" type="text" class="form-control" id="title" value="@Model.Price">
                 </div>
                 <input type="hidden" asp-for="Image" value="@Model.Image"/>
-                @*<div class="input-group mx-4 "style="padding: 10px; font-size: 18px;">
-                    <input type="file" class="form-control" id="inputGroupFile02">
-                    <label class="input-group-text" for="inputGroupFile02"></label>
-                </div>*@
-                @*Save, Cancel Button*@
-                    <div class="button-group text-center">
+                    @{
+                        string imageSource = @Model.Image;
+                        if (!imageSource.Contains("http"))
+                        {
+                            imageSource = "~/images/" + imageSource;
+                        }
+                    }
+                <div class="form-group mx-4" style="padding: 10px; font-size: 18px;">
+                    <label asp-for="@Model.Image">Kurs rasmi</label> <br />
+                    <img src="@imageSource" style="width: 200px;" asp-for="@Model.Image" asp-append-version="true"/>
+                </div>
+                <div class="input-group mx-4" style="padding: 10px; font-size: 18px;">
+                    <input type="file" asp-for="NewImage" accept="image/*" class="form-control" id="inputGroupFile02">
+                </div>
+                    <div class="button-group text-center my-5">
                     <button type="submit" class="btn btn-success me-5" style=" width:200px; " >
                         Saqlash
                     </button>
-                    <a asp-controller="" asp-action="">
+                    <a asp-controller="service" asp-action="services">
                         <span class="btn btn-info"  style=" width:200px;">Bekor qilish</span>
                     </a>
                 </div>
