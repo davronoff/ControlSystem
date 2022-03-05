@@ -91,9 +91,11 @@ namespace ProjectDavomat.AdminPanel.Controllers
         }
 
         [HttpGet]
-        public IActionResult Delete(Guid id)
+        public async Task<IActionResult> DeleteAsync(Guid id)
         {
-            _courseInterface.DeleteCourse(id);
+            var course = await _courseInterface.GetCourse(id);
+            _imageService.DeleteImage(course.Image);
+            await _courseInterface.DeleteCourse(id);
             return RedirectToAction("Courses");
         }
     }
