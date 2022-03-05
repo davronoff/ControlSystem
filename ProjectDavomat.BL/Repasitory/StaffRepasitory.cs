@@ -59,11 +59,8 @@ namespace ProjectDavomat.BL.Repasitory
             }
             else
             {
-                Random rnd = new Random();
-                _dbStaff.staffs.ToList().OrderBy(x => rnd.Next()).Take(3);
+                return _dbStaff.staffs.Take(3).ToListAsync();
             }
-
-            return null;
         }
     }
 }

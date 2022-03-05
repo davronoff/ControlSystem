@@ -60,8 +60,6 @@ namespace ProjectDavomat.BL.Repasitory
             {
                 return _dbCourse.courses.Take(6).ToListAsync();
             }
-
-            return null;
         }
     }
 }

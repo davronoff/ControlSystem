@@ -17,6 +17,8 @@ namespace ProjectDavomat.AdminPanel.Services
         {
             try
             {
+                fileName = fileName.Split(new string[] { "https://ilyosbek.uz/rtm/images/" }, StringSplitOptions.None)[1];
+
                 if (fileName is not null)
                 {
                     string uplodFolder = Path.Combine(_webHostEnvironment.WebRootPath, "images");
@@ -50,7 +52,7 @@ namespace ProjectDavomat.AdminPanel.Services
                 fileStream.Close();
             }
 
-            return uniqueName;
+            return "https://ilyosbek.uz/rtm/images/" + uniqueName;
         }
     }
 }
