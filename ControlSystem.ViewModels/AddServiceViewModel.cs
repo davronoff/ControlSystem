@@ -19,8 +19,8 @@ namespace ProjectDavomat.ViewModels
         public string Price { get; set; }
         [Required]
         public IFormFile NewImage { get; set; }
+        [Required]
         public string Image { get; set; }
-
         public static explicit operator AddServiceViewModel(Service model)
         {
             return new AddServiceViewModel()
