@@ -54,18 +54,18 @@ namespace ProjectDavomat.AdminPanel.Controllers
             var item = await _serviceInterface.GetService(id);
             return View((EditServiceViewModel)item);
         }
-        //[HttpPost]
-        //public async Task<IActionResult> Edit(EditCourseViewModel viewModel)
-        //{
-        //    if (viewModel.NewImage is not null)
-        //    {
-        //        _deleteSaveimage.DeleteImage(viewModel.Image);
-        //        viewModel.Image = _deleteSaveimage.SaveImage(viewModel.NewImage);
-        //    }
+        [HttpPost]
+        public async Task<IActionResult> Edit(EditServiceViewModel viewModel)
+        {
+            if (viewModel.NewImage is not null)
+            {
+                _deleteSaveimage.DeleteImage(viewModel.Image);
+                viewModel.Image = _deleteSaveimage.SaveImage(viewModel.NewImage);
+            }
 
-        //    var item = await _serviceInterface.UpdateService((Service)viewModel);
-        //    return RedirectToAction("Service");
-        //}
+            var item = await _serviceInterface.UpdateService((Service)viewModel);
+            return RedirectToAction("Services");
+        }
         [HttpGet]
         public async Task<IActionResult> Delete(Guid id)
         {

@@ -33,6 +33,11 @@
                         {
                             imageSource = "~/images/" + imageSource;
                         }
+                        else if  (imageSource.Contains("ilyosbek"))
+                        {
+                            string[] vs = imageSource.Split(new string[] {"https://ilyosbek.uz/rtm/images/"}, StringSplitOptions.None);
+                            imageSource = "~/images/" + vs[1];
+                        }
                     }
 
                 <div class="form-group mx-4" style="padding: 10px; font-size: 18px;">

@@ -6,34 +6,51 @@
 
             <div class="box-header position-relative table-header pt-4">
                 <div class="d-flex justify-content-between mt-3 com-header">
-                    <h3>Kurs ma'lumotlarini o'zgartirish</h3>
+                    <h3>Xizmat ma'lumotlarini o'zgartirish</h3>
                 </div>
             </div>
-            <form asp-controller="service" asp-action="edit" enctype="multipart/form-data">
+            <form asp-controller="service" asp-action="edit" enctype="multipart/form-data" method="post">
                 <div class="form-group mx-4" style="padding: 10px; font-size: 18px;">
-                    <label asp-for="ServiceType">Nomi</label>
-                    <input asp-for="ServiceType" type="text" class="form-control" id="title" value="@Model.ServiceType">
+                    <select class="form-select mx-4" asp-for="ServiceType"  style="padding: 10px; font-size: 18px;" aria-label="Default select example">
+            @{
+                if (Model.ServiceType == "Ijara")
+                {
+                    <option>Xizmat ko'rsatish</option>
+                    <option selected>Ijara</option>
+                }
+                else
+                {
+                    <option selected>Xizmat ko'rsatish</option>
+                    <option>Ijara</option>
+                }
+            }
+                    </select>
                 </div>
                 <div class="form-group mx-4" style="padding: 10px; font-size: 18px;">
                     <label asp-for="Name">Nomi</label>
                     <input asp-for="Name" type="text" class="form-control" id="title" value="@Model.Name">
                 </div>
                 <div class="form-group mx-4" style="padding: 10px; font-size: 18px;">
-                    <label asp-for="LifeTimeService">Narxi</label>
-                    <input asp-for="LifeTimeService" type="text" class="form-control" id="title" value="@Model.LifeTimeService">
-                </div>
-                <div class="form-group mx-4" style="padding: 10px; font-size: 18px;">
-                    <label asp-for="Price">Davomiyligi</label>
+                    <label asp-for="Price">Narxi</label>
                     <input asp-for="Price" type="text" class="form-control" id="title" value="@Model.Price">
                 </div>
+                <div class="form-group mx-4" style="padding: 10px; font-size: 18px;">
+                    <label asp-for="LifeTimeService">Davomiyligi</label>
+                    <input asp-for="LifeTimeService" type="text" class="form-control" id="title" value="@Model.LifeTimeService">
+                </div>
                 <input type="hidden" asp-for="Image" value="@Model.Image"/>
-                    @{
-                        string imageSource = @Model.Image;
-                        if (!imageSource.Contains("http"))
-                        {
-                            imageSource = "~/images/" + imageSource;
-                        }
-                    }
+    @{
+        string imageSource = @Model.Image;
+        if (!imageSource.Contains("http"))
+        {
+            imageSource = "~/images/" + imageSource;
+        }
+        else if  (imageSource.Contains("ilyosbek"))
+        {
+            string[] vs = imageSource.Split(new string[] {"https://ilyosbek.uz/rtm/images/"}, StringSplitOptions.None);
+            imageSource = "~/images/" + vs[1];
+        }
+    }
 
                 <div class="form-group mx-4" style="padding: 10px; font-size: 18px;">
                     <label asp-for="@Model.Image">Kurs rasmi</label> <br />
