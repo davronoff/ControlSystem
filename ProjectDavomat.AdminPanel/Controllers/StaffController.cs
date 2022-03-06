@@ -17,7 +17,7 @@ namespace ProjectDavomat.AdminPanel.Controllers
             var itam = await _staffInterface.GetAllStaff();
             return View(itam);
         }
-        public async Task<IActionResult> AddStaffs()
+        public  IActionResult AddStaffs()
         {
             return View();
         }
