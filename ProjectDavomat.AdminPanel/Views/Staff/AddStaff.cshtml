@@ -1,0 +1,41 @@
+﻿@{
+    ViewData["Title"] = "AddStaff Page";
+    Layout = "_Layout";
+}
+@model AddStaffViewModel
+            <div class="box-header position-relative table-header mt-2">
+                <div class="d-flex justify-content-between mt-3 com-header">
+                    <h3>Yangi xodim qo'shish</h3>
+                </div>
+            </div>
+            <form class="mx-4" asp-controller="staff" asp-action="addstaff" method="post">
+                <div class="form-group mx-4" style="padding: 10px; font-size: 18px;">
+                    <label asp-for="FirstName">FirstName</label>
+                    <input asp-for="FirstName" type="text" class="form-control" id="title" placeholder="Hodim ismini kiriting">
+                </div>
+                <div class="form-group mx-4" style="padding: 10px; font-size: 18px;">
+                    <label asp-for="LastName">LastName</label>
+                    <input asp-for="LastName" type="text" class="form-control" id="title" placeholder="Hodim familyasini kiriting">
+                </div>
+                <div class="input-group mx-4 "style="padding: 10px; font-size: 18px;">
+                    <input asp-for="Image" type="file" class="form-control" id="inputGroupFile02">
+                </div>
+                <div class="form-group mx-4" style="padding: 10px; font-size: 18px;">
+                    <label asp-for="About">Batafsil</label>
+                    <textarea asp-for="About" class="form-control" id="description" placeholder="Hodim haqida batafsil " rows="12"></textarea>
+                </div>
+                 <div class="form-group mx-4" style="padding: 10px; font-size: 18px;">
+                    <label asp-for="Position">Lavozim</label>
+                    <input asp-for="Position" type="text" class="form-control" id="title" placeholder="Hodim lavozimini kiritign">
+                </div>
+                @*Save, Cancel Button*@
+                <div class="button-group text-center my-5">
+                    <button type="submit" class="btn btn-success me-5" style=" width:200px; " >
+                        Saqlash
+                    </button>
+                    <a asp-controller="staff" asp-action="staffs">
+                        <span class="btn btn-info"  style=" width:200px;">Bekor qilish</span>
+                    </a>
+                </div>
+            </form>
+

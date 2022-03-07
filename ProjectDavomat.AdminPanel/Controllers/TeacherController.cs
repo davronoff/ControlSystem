@@ -17,7 +17,7 @@ namespace ProjectDavomat.AdminPanel.Controllers
             var itam = await _teacherInterface.GetAllTeacher();
             return View(itam);
         }
-        public async Task<IActionResult> AddTeachers()
+        public IActionResult AddTeachers()
         {
             return View();
         }

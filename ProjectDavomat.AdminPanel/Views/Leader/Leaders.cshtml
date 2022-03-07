@@ -1,16 +1,16 @@
 ﻿@{
-    ViewData["Title"] = "Staffs Page";
+    ViewData["Title"] = "Leader Page";
     Layout = "_Layout";
 }
-@model List<Staff>
+@model List<Leader>
     <div class="row blok mt-5">
         <div class="col-xs-11">
             <div class="box data-table">
                 <div class="box-header position-relative table-header mt-2">
                     <div class="d-flex justify-content-between mt-3 mx-4 com-header">
-                        <h3>Staffs</h3>
-                        <a asp-controller="staff" asp-action="addstaff">
-                            <span class="btn btn-success"><i class="las la-plus"></i>Yangi hodim qo'shish</span>
+                        <h3>Lider</h3>
+                        <a asp-controller="leader" asp-action="addleader">
+                            <span class="btn btn-success"><i class="las la-plus"></i>Rahbarlar qo'shish</span>
                         </a>
                     </div>
                 </div>
@@ -18,17 +18,17 @@
                     <table class="table table-hover">
                         <tr>
                             <th>Ism</th>
-                            <th>Familiyas</th>
-                            <th>Rasmi</th>
-                            <th>Batafsil</th>
+                            <th>Fsmilyasi</th>
                             <th>Lavozimi</th>
-                            <th style="text-align:center;">Action</th>
+                            <th>Rasmi</th>
+                            <th  style="text-align:center;">Action</th>
                         </tr>
-                        @foreach (var item in Model)
+                    @foreach(var item in Model)
                     {
-                         <tr>
+                     <tr>
                             <td>@item.FirstName</td>
                             <td>@item.LastName</td>
+                            <td>@item.Position</td>
                             @{
                                 string imageSource = @item.Image;
                                 if (!imageSource.Contains("http"))
@@ -42,26 +42,15 @@
                                 }
                             }
                             <td><img src="@imageSource" asp-append-version="true" style="width: 50px;"/></td>
-                                    <td>
-                                @{
-                                    string text = item.About;
-                                    if (text.Length > 15)
-                                    {
-                                        text = item.About.Substring(0, 15);
-                                    }
-                                }
-                                @text...
-                            </td>
-                            <td>@item.Position</td>
-                            @*action*@
                             <td class="cell">
-                                <a asp-controller="staff" asp-action="edit" asp-route-id="@item.Id" >
+                                <a asp-controller="leader" asp-action="editleader" asp-route-id="@item.Id">
                                     <span class="btn btn-success">Tahrirlash</span>
                                 </a>
                                 <button type="button" class="btn btn-danger" data-bs-toggle="modal"
                                     data-bs-target="#deleteModal">O'chirish</button>
+
                                 <!-- Modal -->
-                                <div class="modal fade" id="deleteModal" tabindex="-1"
+                                <div class="modal fade" id="deleteModal" tabindex=""
                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
@@ -71,20 +60,19 @@
                                                     aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <h4>Rostdan ham bu hodimni o'chirmoqchimisiz?</h4>
+                                                <h4>Rostdan ham bu liderni o'chirmoqchimisiz?</h4>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" data-bs-dismiss="modal" class="btn btn-secondary">Yo'q</button>
-                                                <a asp-controller="staff" asp-action="delete" asp-route-id="@item.Id" class="btn btn-primary"
+                                                <a asp-controller="leader" asp-action="delete" asp-route-id="@item.Id" class="btn btn-primary"
                                                     >Ha</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </td>
-                        </tr>   
+                    </tr>   
                     }
-                    
                     </table>
                 </div><!-- /.box-body -->
             </div><!-- /.box -->
