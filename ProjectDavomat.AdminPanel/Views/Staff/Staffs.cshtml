@@ -9,8 +9,8 @@
                 <div class="box-header position-relative table-header mt-2">
                     <div class="d-flex justify-content-between mt-3 mx-4 com-header">
                         <h3>Staffs</h3>
-                        <a asp-controller="staff" asp-action="addstaffs">
-                            <span class="btn btn-success"><i class="las la-plus"></i>Add Staff</span>
+                        <a asp-controller="staff" asp-action="addstaff">
+                            <span class="btn btn-success"><i class="las la-plus"></i>Yangi hodim qo'shish</span>
                         </a>
                     </div>
                 </div>
@@ -22,65 +22,56 @@
                             <th>Rasmi</th>
                             <th>Batafsil</th>
                             <th>Lavozimi</th>
-                            <th>Action</th>
+                            <th style="text-align:center;">Action</th>
                         </tr>
                         @foreach (var item in Model)
                     {
-                     <tr>
+                         <tr>
                             <td>@item.FirstName</td>
                             <td>@item.LastName</td>
-                            <td><img src="@item.Image" asp-append-version="true" style="width: 50px;"/></td>
-                            <td>
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                    data-bs-target="#infoModal">Aboute</button>
-
+                            @{
+                                string imageSource = @item.Image;
+                                if (!imageSource.Contains("http"))
+                                {
+                                    imageSource = "~/images/" + imageSource;
+                                }
+                                else if  (imageSource.Contains("ilyosbek"))
+                                {
+                                    string[] vs = imageSource.Split(new string[] {"https://ilyosbek.uz/rtm/images/"}, StringSplitOptions.None);
+                                    imageSource = "~/images/" + vs[1];
+                                }
+                            }
+                            <td><img src="@imageSource" asp-append-version="true" style="width: 50px;"/></td>
+                                    <td>
+                                @{
+                                    string text = item.About;
+                                    if (text.Length > 15)
+                                    {
+                                        text = item.About.Substring(0, 15);
+                                    }
+                                }
+                                @text...
+                            </td>
+                            <td>@item.Position</td>
+                            @*action*@
+                            <td class="cell">
+                                <a asp-controller="staff" asp-action="edit" asp-route-id="@item.Id" >
+                                    <span class="btn btn-success">Tahrirlash</span>
+                                </a>
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                    data-bs-target="#deleteModal">O'chirish</button>
                                 <!-- Modal -->
-                                <div class="modal fade" id="infoModal" tabindex="-1"
+                                <div class="modal fade" id="deleteModal" tabindex="-1"
                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel"> Batafsil'
-                                                    </h5>
+                                                <h5 class="modal-title" id="exampleModalLabel">Alert</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                @item.About
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-bs-dismiss="modal">Close</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>@item.Position</td>
-                            <td class="cell">
-                                <a asp-controller="staff" asp-action="edit">
-                                    <span class="btn btn-success">Tahrilash</span>
-                                </a>
-                                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                    data-bs-target="#deleteModal">O'chirish</button>
-
-                                <!-- Modal -->
-                                <div class="modal fade" id="deleteModal" tabindex="-1"
-                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-scrollable">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Alert</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Yopish"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <h4>Are you realy want delete this course?</h4>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-bs-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary">Rostdan ham bu kursni o'chirmoqchimisiz?</button>
+                                                <h4>Rostdan ham bu hodimni o'chirmoqchimisiz?</h4>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" data-bs-dismiss="modal" class="btn btn-secondary">Yo'q</button>
@@ -91,7 +82,7 @@
                                     </div>
                                 </div>
                             </td>
-                    </tr>   
+                        </tr>   
                     }
                     
                     </table>

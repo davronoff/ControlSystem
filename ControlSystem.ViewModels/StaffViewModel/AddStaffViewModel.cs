@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjectDavomat.ViewModels.Staff
+namespace ProjectDavomat.ViewModels
 {
     public class AddStaffViewModel
     {
