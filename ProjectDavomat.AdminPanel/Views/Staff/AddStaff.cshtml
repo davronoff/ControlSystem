@@ -1,8 +1,9 @@
-﻿@{
+﻿@using ProjectDavomat.ViewModels.Staff
+@{
     ViewData["Title"] = "Add Staff Page";
     Layout = "_Layout";
 }
-@model Staff
+@model AddStaffViewModel
             <div class="box-header position-relative table-header mt-2">
                 <div class="d-flex justify-content-between mt-3 com-header">
                     <h3>Add new course</h3>
@@ -31,10 +32,10 @@
                 </div>
                 @*Save, Cancel Button*@
                 <div class="button-group">
-                    <a asp-controller="" asp-action="" style="margin-left:570px; width:200px;">
+                    <a asp-controller="staff" asp-action="addstaff" style="margin-left:570px; width:200px;">
                         <span class="btn btn-success" style=" width:200px;">Saqlash</span>
                     </a>
-                    <a asp-controller="" asp-action="">
+                    <a asp-controller="staff" asp-action="staffs">
                         <span class="btn btn-info" style=" width:200px;">Bekor qilish</span>
                     </a>
                 </div>

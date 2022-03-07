@@ -17,8 +17,8 @@
                 <div class="jadval box-body table-responsive no-padding">
                     <table class="table table-hover">
                         <tr>
-                            <th>Ismi</th>
-                            <th>Familiyasi</th>
+                            <th>Ism</th>
+                            <th>Familiyas</th>
                             <th>Rasmi</th>
                             <th>Batafsil</th>
                             <th>Lavozimi</th>
@@ -37,10 +37,10 @@
                                 <!-- Modal -->
                                 <div class="modal fade" id="infoModal" tabindex="-1"
                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-scrollable">
+                                    <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel"> Full Aboute
+                                                <h5 class="modal-title" id="exampleModalLabel"> Batafsil'
                                                     </h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
@@ -58,11 +58,11 @@
                             </td>
                             <td>@item.Position</td>
                             <td class="cell">
-                                <a asp-controller="" asp-action="">
-                                    <span class="btn btn-success">Edite</span>
+                                <a asp-controller="staff" asp-action="edit">
+                                    <span class="btn btn-success">Tahrilash</span>
                                 </a>
                                 <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                    data-bs-target="#deleteModal">Delete</button>
+                                    data-bs-target="#deleteModal">O'chirish</button>
 
                                 <!-- Modal -->
                                 <div class="modal fade" id="deleteModal" tabindex="-1"
@@ -72,7 +72,7 @@
                                             <div class="modal-header">
                                                 <h5 class="modal-title" id="exampleModalLabel">Alert</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
+                                                    aria-label="Yopish"></button>
                                             </div>
                                             <div class="modal-body">
                                                 <h4>Are you realy want delete this course?</h4>
@@ -80,7 +80,12 @@
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary"
                                                     data-bs-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary">I am sure</button>
+                                                <button type="button" class="btn btn-primary">Rostdan ham bu kursni o'chirmoqchimisiz?</button>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" data-bs-dismiss="modal" class="btn btn-secondary">Yo'q</button>
+                                                <a asp-controller="staff" asp-action="delete" asp-route-id="@item.Id" class="btn btn-primary"
+                                                    >Ha</a>
                                             </div>
                                         </div>
                                     </div>

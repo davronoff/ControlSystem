@@ -1,0 +1,80 @@
+﻿@{
+    ViewData["Title"] = "Leader Page";
+    Layout = "_Layout";
+}
+@model List<Leader>
+    <div class="row blok mt-5">
+        <div class="col-xs-11">
+            <div class="box data-table">
+                <div class="box-header position-relative table-header mt-2">
+                    <div class="d-flex justify-content-between mt-3 mx-4 com-header">
+                        <h3>Lider</h3>
+                        <a asp-controller="leader" asp-action="addleader">
+                            <span class="btn btn-success"><i class="las la-plus"></i>Lider qo'shish</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="jadval box-body table-responsive no-padding">
+                    <table class="table table-hover">
+                        <tr>
+                            <th>FirstName</th>
+                            <th>LastName</th>
+                            <th>Lavozimi</th>
+                            <th>Image</th>
+                            <th  style="text-align:center;">Action</th>
+                        </tr>
+                    @foreach(var item in Model)
+                    {
+                     <tr>
+                            <td>@item.FirstName</td>
+                            <td>@item.LastName</td>
+                            <td>@item.Position</td>
+                            @{
+                                string imageSource = @item.Image;
+                                if (!imageSource.Contains("http"))
+                                {
+                                    imageSource = "~/images/" + imageSource;
+                                }
+                                else if  (imageSource.Contains("ilyosbek"))
+                                {
+                                    string[] vs = imageSource.Split(new string[] {"https://ilyosbek.uz/rtm/images/"}, StringSplitOptions.None);
+                                    imageSource = "~/images/" + vs[1];
+                                }
+                            }
+                            <td><img src="@imageSource" asp-append-version="true" style="width: 50px;"/></td>
+                            <td class="cell">
+                                <a asp-controller="leader" asp-action="editleader" asp-route-id="@item.Id">
+                                    <span class="btn btn-success">Tahrirlash</span>
+                                </a>
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                    data-bs-target="#deleteModal">O'chirish</button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="deleteModal" tabindex=""
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Alert</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <h4>Rostdan ham bu liderni o'chirmoqchimisiz?</h4>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" data-bs-dismiss="modal" class="btn btn-secondary">Yo'q</button>
+                                                <a asp-controller="leader" asp-action="delete" asp-route-id="@item.Id" class="btn btn-primary"
+                                                    >Ha</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                    </tr>   
+                    }
+                    </table>
+                </div><!-- /.box-body -->
+            </div><!-- /.box -->
+        </div>
+    </div>

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProjectDavomat.BL.Interface;
+using ProjectDavomat.ViewModels.Staff;
 using System.Threading.Tasks;
 
 namespace ProjectDavomat.AdminPanel.Controllers
@@ -17,9 +18,12 @@ namespace ProjectDavomat.AdminPanel.Controllers
             var itam = await _staffInterface.GetAllStaff();
             return View(itam);
         }
-        public  IActionResult AddStaffs()
+        [HttpGet]
+        public  IActionResult AddStaff()
         {
             return View();
         }
+        //[HttpPost]
+        //public async Task<IActionResult> AddStaff(AddStaffViewModel)
     }
 }
