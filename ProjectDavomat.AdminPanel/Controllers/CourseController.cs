@@ -1,12 +1,16 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Newtonsoft.Json;
 using ProjectDavomat.AdminPanel.Services;
 using ProjectDavomat.BL.Interface;
 using ProjectDavomat.Domain;
 using ProjectDavomat.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace ProjectDavomat.AdminPanel.Controllers
@@ -51,6 +55,30 @@ namespace ProjectDavomat.AdminPanel.Controllers
         [HttpPost]
         public async Task<IActionResult> AddCourses(AddCourseViewModel viewModel)
         {
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("https://ilyosbek.uz/rtm/api/images/save");
+
+
+            byte[] imageBytes;
+            using(var ms = new MemoryStream())
+            {
+                viewModel.Image.CopyTo(ms);
+                imageBytes = ms.ToArray();
+            }
+            
+            ImageModel image = new ImageModel()
+            {
+                Name = viewModel.Name,
+                ImageFile = imageBytes
+            };
+            
+            var json = JsonConvert.SerializeObject(image);
+            var data = new StringContent(json, Encoding.UTF8, "application/json");
+
+            var res = client.PostAsync(client.BaseAddress, data).Result;
+
+            string imageFileName = res.Content.ToString();
+
             var list = await _categoryInterface.GetAllCourseCategory();
             var category = list.FirstOrDefault(c => c.Name == viewModel.CourseCategoryName);
             Course course = new Course()

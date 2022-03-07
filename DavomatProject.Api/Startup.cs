@@ -1,3 +1,4 @@
+using DavomatProject.Api.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -36,6 +37,7 @@ namespace DavomatProject.Api
 
             services.AddScoped<IServiceInterface, ServiceRepasitory>();
 
+            services.AddScoped<IImageService, ImageService>();
             services.AddDbContext<AppDbContext>(options =>
                 options.UseNpgsql(Configuration.GetConnectionString("PostgreDb")));
 
