@@ -214,6 +214,9 @@ main {
 .card-footer {
     background: #fbfafd;
 }
+th{
+    text-align:center;
+}
 /* card add */
 
 
