@@ -24,11 +24,12 @@ namespace ProjectDavomat.BL.Repasitory
             return Task.FromResult(newCourse);
         }
 
-        public void DeleteCourse(Guid id)
+        public Task DeleteCourse(Guid id)
         {
-            Course course = _dbCourse.courses.Where(p => p.Id == id).FirstOrDefault();
+            Course course = _dbCourse.courses.FirstOrDefault(p => p.Id == id);
             _dbCourse.courses.Remove(course);
             _dbCourse.SaveChanges();
+            return Task.FromResult(0);
         }
 
         public Task<List<Course>> GetAllCourse() => _dbCourse.courses.ToListAsync();

@@ -11,7 +11,7 @@ namespace ProjectDavomat.BL.Interface
         Task<Course> GetCourse(Guid id);
         Task<Course> AddCourse(Course newCourse);
         Task<Course> UpdateCourse(Course Course);
-        void DeleteCourse(Guid id);
+        Task DeleteCourse(Guid id);
 
         Task<int> CountCourse();
         Task<List<Course>> GetRandomCourse6();
