@@ -19,7 +19,7 @@ namespace ProjectDavomat.Domain
          public string Image { get; set; }
          [Required]
          public string Experince { get; set; }
-        public string Social { get; set; }
+         public string Social { get; set; }
 
     }
  }

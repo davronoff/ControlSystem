@@ -10,6 +10,8 @@ namespace ProjectDavomat.Domain
         [Required]
         public string Price { get; set; }
         [Required]
+        public string Title { get; set; }
+        [Required]
         public string Name { get; set; }
         [Required]
         public string Duration { get; set; }

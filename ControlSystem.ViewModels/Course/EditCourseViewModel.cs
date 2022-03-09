@@ -12,6 +12,8 @@ namespace ProjectDavomat.ViewModels
         [Required]
         public string Price { get; set; }
         [Required]
+        public string Title { get; set; }
+        [Required]
         public string Name { get; set; }
         [Required]
         public string Duration { get; set; }
@@ -27,6 +29,7 @@ namespace ProjectDavomat.ViewModels
             return new EditCourseViewModel()
             {
                 Id = model.Id,
+                Title = model.Title,
                 Name = model.Name,
                 Price = model.Price,
                 Duration = model.Duration,
@@ -41,6 +44,7 @@ namespace ProjectDavomat.ViewModels
             return new Course()
             {
                 Id = model.Id,
+                Title = model.Title,
                 Name = model.Name,
                 Price = model.Price,
                 Duration = model.Duration,

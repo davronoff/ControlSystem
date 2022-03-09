@@ -22,6 +22,7 @@
                             <th>Rasmi</th>
                             <th>Batafsil</th>
                             <th>Lavozimi</th>
+                            <th>Kontakt</th>
                             <th style="text-align:center;">Action</th>
                         </tr>
                         @foreach (var item in Model)
@@ -53,6 +54,7 @@
                                 @text...
                             </td>
                             <td>@item.Position</td>
+                            <td>@item.Social</td>
                             @*action*@
                             <td class="cell">
                                 <a asp-controller="staff" asp-action="editstaff" asp-route-id="@item.Id">

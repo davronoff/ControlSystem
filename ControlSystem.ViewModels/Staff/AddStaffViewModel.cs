@@ -19,5 +19,6 @@ namespace ProjectDavomat.ViewModels
         public string About { get; set; }
         [Required]
         public string Position { get; set; }
+        public string Social { get; set; }
     }
 }

@@ -21,6 +21,7 @@ namespace ProjectDavomat.ViewModels
         public string About { get; set; }
         [Required]
         public string Position { get; set; }
+        public string Social { get; set; }
 
         public static explicit operator EditStaffViewModel(Staff model)
         {
@@ -31,7 +32,8 @@ namespace ProjectDavomat.ViewModels
                 LastName = model.LastName,
                 Image = model.Image,
                 About = model.About,
-                Position = model.Position
+                Position = model.Position,
+                Social = model.Social
             };
         }
 
@@ -44,7 +46,8 @@ namespace ProjectDavomat.ViewModels
                 LastName = viewModel.LastName,
                 Image = viewModel.Image,
                 About = viewModel.About,
-                Position = viewModel.Position
+                Position = viewModel.Position,
+                Social = viewModel.Social
             };
         }
     }

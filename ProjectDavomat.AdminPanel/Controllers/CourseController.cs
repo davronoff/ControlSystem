@@ -84,6 +84,7 @@ namespace ProjectDavomat.AdminPanel.Controllers
             Course course = new Course()
             {
                 Id = Guid.NewGuid(),
+                Title = viewModel.Title,
                 Name = viewModel.Name,
                 Price = viewModel.Price,
                 Description = viewModel.Description,

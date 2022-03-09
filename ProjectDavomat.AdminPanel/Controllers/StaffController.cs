@@ -39,7 +39,8 @@ namespace ProjectDavomat.AdminPanel.Controllers
                 LastName = viewModel.LastName,
                 Image = viewModel.Image,
                 About = viewModel.About,
-                Position = viewModel.Position
+                Position = viewModel.Position,
+                Social = viewModel.Social
             };
             await _staffInterface.AddStaff(staff);
             return RedirectToAction("Staffs");

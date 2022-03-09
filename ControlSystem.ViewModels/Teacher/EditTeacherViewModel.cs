@@ -24,6 +24,7 @@ namespace ProjectDavomat.ViewModels
         public IFormFile NewImage { get; set; }
         [Required]
         public string Experince { get; set; }
+        public string Social { get; set; }
 
         public static explicit operator EditTeacherViewModel(Teacher model)
         {
@@ -34,7 +35,8 @@ namespace ProjectDavomat.ViewModels
                 LastaName = model.LastaName,
                 Skills = model.Skills,
                 Image = model.Image,
-                Experince = model.Experince
+                Experince = model.Experince,
+                Social = model.Social
 
             };
         }
@@ -43,10 +45,12 @@ namespace ProjectDavomat.ViewModels
             return new Teacher()
             {
                 Id = viewModel.Id,
-                FirstName = viewModel.LastaName,
+                FirstName = viewModel.FirstName,
+                LastaName = viewModel.LastaName,
                 Skills = viewModel.Skills,
                 Image = viewModel.Image,
-                Experince = viewModel.Image
+                Experince = viewModel.Experince,
+                Social = viewModel.Social
             };
         }
     }

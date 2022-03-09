@@ -22,6 +22,7 @@
                         <th>Mahorat</th>
                         <th>Rasm</th>
                         <th>Tajriba</th>
+                        <th>Kontakt</th>
                         <th style="text-align:center;">Action</th>
                     </tr>
                     @foreach (var item in Model)
@@ -53,6 +54,7 @@
                          }
                         <td><img src="@imageSource" asp-append-version="true" style="width: 50px;"/></td>
                         <td>@item.Experince</td>
+                        <td>@item.Social</td>
                         <td class="cell">
                             <a asp-controller="teacher" asp-action="edit" asp-route-id="@item.Id">
                                     <span class="btn btn-success">Tahrirlash</span>

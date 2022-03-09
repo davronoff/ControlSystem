@@ -38,8 +38,9 @@ namespace ProjectDavomat.AdminPanel.Controllers
                 FirstName = viewModel.FirstName,
                 LastaName = viewModel.LastaName,
                 Skills = viewModel.Skills,
-                Image =viewModel.Image,
-                Experince = viewModel.Experince
+                Image = viewModel.Image,
+                Experince = viewModel.Experince,
+                Social = viewModel.Social
             };
             await _teacherInterface.AddTeacher(teacher);
 

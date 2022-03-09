@@ -11,6 +11,10 @@
             </div>
             <form asp-controller="course" asp-action="edit" enctype="multipart/form-data">
                 <div class="form-group mx-4" style="padding: 10px; font-size: 18px;">
+                    <label asp-for="Title">Sarlavha</label>
+                    <input asp-for="Title" type="text" class="form-control" id="title" value="@Model.Title">
+                </div>
+                <div class="form-group mx-4" style="padding: 10px; font-size: 18px;">
                     <label asp-for="Name">Nomi</label>
                     <input asp-for="Name" type="text" class="form-control" id="title" value="@Model.Name">
                 </div>

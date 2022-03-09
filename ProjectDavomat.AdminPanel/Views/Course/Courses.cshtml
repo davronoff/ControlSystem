@@ -17,6 +17,7 @@
                 <div class="jadval box-body table-responsive no-padding">
                     <table class="table table-hover">
                         <tr>
+                            <th>Sarlavha</th>
                             <th>Name</th>
                             <th>Price</th>
                             <th>Image</th>
@@ -27,6 +28,7 @@
                     @foreach(var item in Model)
                     {
                      <tr>
+                            <td>@item.Title</td>
                             <td>@item.Name</td>
                             <td>@item.Price</td>
                             @{
