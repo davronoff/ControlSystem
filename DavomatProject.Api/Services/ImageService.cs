@@ -1,7 +1,10 @@
 ﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using ProjectDavomat.Domain;
 using System;
 using System.IO;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace DavomatProject.Api.Services
 {
@@ -18,20 +21,17 @@ namespace DavomatProject.Api.Services
             throw new System.NotImplementedException();
         }
 
-        public string SaveImage(ImageModel image)
+        public string SaveImage(IFormFile image)
         {
             string uniqueName = string.Empty;
-            using (var memory = new MemoryStream(image.ImageFile))
+            if (image.FileName != null)
             {
-                if (image.ImageFile != null)
-                {
-                    string uplodFolder = Path.Combine(_webHostEnvironment.WebRootPath, "Images");
-                    uniqueName = Guid.NewGuid().ToString() + "_" + image.Name;
-                    string filePath = Path.Combine(uplodFolder, uniqueName);
-                    FileStream fileStream = new FileStream(filePath, FileMode.Create);
-                    memory.CopyTo(fileStream);
-                    fileStream.Close();
-                }
+                string uplodFolder = Path.Combine(_webHostEnvironment.WebRootPath, "images");
+                uniqueName = Guid.NewGuid().ToString()+"_"+image.FileName;
+                string filePath = Path.Combine(uplodFolder, uniqueName);
+                FileStream fileStream = new FileStream(filePath, FileMode.Create);
+                image.CopyTo(fileStream);
+                fileStream.Close();
             }
 
             return "https://ilyosbek.uz/rtm/images/" + uniqueName;

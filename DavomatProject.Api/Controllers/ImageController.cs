@@ -1,6 +1,9 @@
 ﻿using DavomatProject.Api.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ProjectDavomat.Domain;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace DavomatProject.Api.Controllers
 {
@@ -15,11 +18,9 @@ namespace DavomatProject.Api.Controllers
         }
         [HttpPost]
         [Route("save")]
-        public string UploadImage(ImageModel image)
+        public string UploadImage([FromForm]IFormFile image)
         {
-            string res = _imageService.SaveImage(image);
-
-            return res;
+            return _imageService.SaveImage(image);
         }
     }
 }

@@ -44,12 +44,12 @@ namespace DavomatProject.Api.Controllers
             return Ok(json);
         }
 
-        [HttpDelete, Route("delete/{id}")]
-        public async Task<IActionResult> Delete(Guid id)
-        {
-            await _serviceCourse.DeleteCourse(id);
-            return Ok();
-        }
+        //[HttpDelete, Route("delete/{id}")]
+        //public async Task<IActionResult> Delete(Guid id)
+        //{
+        //    await _serviceCourse.DeleteCourse(id);
+        //    return Ok();
+        //}
 
         //return count of courses
         [HttpGet, Route("get/count")]
