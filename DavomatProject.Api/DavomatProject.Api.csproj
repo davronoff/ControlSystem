@@ -25,4 +25,8 @@
     <ProjectReference Include="..\ProjectDavomat.Domain\ProjectDavomat.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\images\" />
+  </ItemGroup>
+
 </Project>
