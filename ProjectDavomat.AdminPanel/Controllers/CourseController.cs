@@ -122,7 +122,7 @@ namespace ProjectDavomat.AdminPanel.Controllers
         {
             var course = await _courseInterface.GetCourse(id);
             _imageService.DeleteImage(course.Image);
-            _courseInterface.DeleteCourse(id);
+            await _courseInterface.DeleteCourse(id);
             return RedirectToAction("Courses");
         }
     }
