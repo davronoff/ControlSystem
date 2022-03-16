@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -54,9 +59,10 @@
                     <a asp-controller="leader" asp-action="leaders"><span class="las la-user-secret"></span>
                         <span>Rahbarlar</span></a>
                 </li>
-                <li class="out">
-                    <a href=""><span><i class="las la-arrow-circle-left"></i></span>
-                        <span>Chiqish</span></a>
+                <li class="nav-item">
+                    <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                        <button id="logout" type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+                    </form>
                 </li>
             </ul>
         </div>
@@ -67,8 +73,8 @@
                 <div class="user-wrapper">
                     <img src="~/images/user.png" width="40px" height="40px" alt="" />
                     <div>
-                        <h4>Ilyosbek Davronov</h4>
-                        <small>Supper admin</small>
+                        <h4>@UserManager.GetUserName(User)</h4>
+                        <small>Super admin</small>
                     </div>
                 </div>
          </header>

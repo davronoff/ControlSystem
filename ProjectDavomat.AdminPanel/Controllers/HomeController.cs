@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using ProjectDavomat.BL.Interface;
 using System.Threading.Tasks;
 
@@ -12,6 +13,8 @@ namespace ProjectDavomat.AdminPanel.Controllers
         {
             _courseInterface = courseInterface;    
         }
+
+        [Authorize]
         public async Task<IActionResult> Index()
         {
             var item = await _courseInterface.GetAllCourse();
