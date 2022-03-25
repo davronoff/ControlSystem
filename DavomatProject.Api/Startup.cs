@@ -1,6 +1,7 @@
-using DavomatProject.Api.Services;
+using Amazon.S3;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -24,31 +25,25 @@ namespace DavomatProject.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAWSService<IAmazonS3>();
             services.AddScoped<ILeaderInterface, LeaderRepository>();
             services.AddScoped<ICourseCategoryInterface, CourseCategoryRepasitory>();
-            
             services.AddScoped<ITeacherInterface, TeacherRepasitory>();
-
             services.AddScoped<IUserInterface, UserRepasitory>();
-
             services.AddScoped<IStaffInterface, StaffRepasitory>();
-
             services.AddScoped<ICourseInterface, CourseRepasitory>();
-
             services.AddScoped<IServiceInterface, ServiceRepasitory>();
 
-            services.AddScoped<IImageService, ImageService>();
             services.AddDbContext<AppDbContext>(options =>
                 options.UseNpgsql(Configuration.GetConnectionString("PostgreDb")));
 
             services.AddControllers();
-
             services.AddCors();
 
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "DavomatProject.Api", Version = "v1" });
-            });
+            //services.AddSwaggerGen(c =>
+            //{
+            //    c.SwaggerDoc("v1", new OpenApiInfo { Title = "DavomatProject.Api", Version = "v1" });
+            //});
         }
 
         //This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,6 +54,10 @@ namespace DavomatProject.Api
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "DavomatProject.Api v1"));
+            }
+            else
+            {
+                app.UseHsts();
             }
 
             app.UseHttpsRedirection();
@@ -78,6 +77,10 @@ namespace DavomatProject.Api
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+            app.Run(async (context) =>
+            {
+                await context.Response.WriteAsync("Could Not Find Anything");
             });
         }
     }

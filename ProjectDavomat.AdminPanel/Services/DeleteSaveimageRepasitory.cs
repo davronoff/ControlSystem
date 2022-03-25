@@ -1,7 +1,14 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
+using ProjectDavomat.Domain;
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace ProjectDavomat.AdminPanel.Services
 {
@@ -21,7 +28,7 @@ namespace ProjectDavomat.AdminPanel.Services
 
                 if (fileName is not null)
                 {
-                    string uplodFolder = Path.Combine(_webHostEnvironment.WebRootPath, "images");
+                    string uplodFolder = Path.Combine(@"C:\inetpub\wwwroot\RTM_API\wwwroot\", "images");
                     string filePath = Path.Combine(uplodFolder, fileName);
                     FileInfo fileInfo = new FileInfo(filePath);
                     if (fileInfo.Exists)
@@ -38,21 +45,24 @@ namespace ProjectDavomat.AdminPanel.Services
             }
         }
 
-        public string SaveImage(IFormFile formFile)
+        public async Task<string> SaveImageAsync(IFormFile formFile)
         {
-            string uniqueName = string.Empty;
-            if (formFile.FileName != null)
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("https://ilyosbek.uz/rtm/api/image/");
+            MultipartFormDataContent form = new MultipartFormDataContent();
+            HttpContent content = new StringContent("file");
+            form.Add(content, "file");
+            var stream = formFile.OpenReadStream();
+            content = new StreamContent(stream);
+            content.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
             {
-                string uplodFolder = Path.Combine(_webHostEnvironment.WebRootPath, "images");
-                uniqueName = Guid.NewGuid().ToString() + "_" + formFile.FileName;
+                Name = "file",
+                FileName = formFile.FileName
+            };
+            form.Add(content);
 
-                string filePath = Path.Combine(uplodFolder, uniqueName);
-                FileStream fileStream = new FileStream(filePath, FileMode.Create);
-                formFile.CopyTo(fileStream);
-                fileStream.Close();
-            }
-
-            return "https://ilyosbek.uz/rtm/images/" + uniqueName;
+            var response = await client.PostAsync("save", form);
+            return response.Content.ReadAsStringAsync().Result;
         }
     }
 }

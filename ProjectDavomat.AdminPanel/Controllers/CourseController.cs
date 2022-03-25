@@ -66,18 +66,12 @@ namespace ProjectDavomat.AdminPanel.Controllers
                 imageBytes = ms.ToArray();
             }
             
-            ImageModel image = new ImageModel()
-            {
-                Name = viewModel.Name,
-                ImageFile = imageBytes
-            };
-            
-            var json = JsonConvert.SerializeObject(image);
-            var data = new StringContent(json, Encoding.UTF8, "application/json");
+            //var json = JsonConvert.SerializeObject(image);
+            //var data = new StringContent(json, Encoding.UTF8, "application/json");
 
-            var res = client.PostAsync(client.BaseAddress, data).Result;
+            //var res = client.PostAsync(client.BaseAddress, data).Result;
 
-            string imageFileName = res.Content.ToString();
+           // string imageFileName = res.Content.ToString();
 
             var list = await _categoryInterface.GetAllCourseCategory();
             var category = list.FirstOrDefault(c => c.Name == viewModel.CourseCategoryName);
@@ -89,7 +83,7 @@ namespace ProjectDavomat.AdminPanel.Controllers
                 Price = viewModel.Price,
                 Description = viewModel.Description,
                 Duration = viewModel.Duration,
-                Image = _imageService.SaveImage(viewModel.Image),
+                Image = await _imageService.SaveImageAsync(viewModel.Image),
                 CourseCategoryId = category.Id
             };
 
@@ -112,7 +106,7 @@ namespace ProjectDavomat.AdminPanel.Controllers
             if (viewModel.NewImage is not null)
             {
                 _imageService.DeleteImage(viewModel.Image);
-                viewModel.Image = _imageService.SaveImage(viewModel.NewImage);
+                viewModel.Image = await _imageService.SaveImageAsync(viewModel.NewImage);
             }
 
             var item = await _courseInterface.UpdateCourse((Course)viewModel);

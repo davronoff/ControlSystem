@@ -1,8 +1,9 @@
-﻿namespace ProjectDavomat.Domain
+﻿using Microsoft.AspNetCore.Http;
+
+namespace ProjectDavomat.Domain
 {
     public class ImageModel
     {
-        public string Name { get; set; }
-        public byte[] ImageFile { get; set; }
+        public IFormFile image { get; set; }
     }
 }

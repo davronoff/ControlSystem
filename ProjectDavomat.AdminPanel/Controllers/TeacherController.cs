@@ -58,7 +58,7 @@ namespace ProjectDavomat.AdminPanel.Controllers
             if (viewModel.NewImage is not null)
             {
                 _deleteSaveimage.DeleteImage(viewModel.Image);
-                viewModel.Image = _deleteSaveimage.SaveImage(viewModel.NewImage);
+                viewModel.Image = await _deleteSaveimage.SaveImageAsync(viewModel.NewImage);
             }
             var model = await _teacherInterface.UpdateTeacher((Teacher)viewModel);
             return RedirectToAction("Teachers");

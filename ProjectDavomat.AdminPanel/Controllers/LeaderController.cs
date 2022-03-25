@@ -38,7 +38,7 @@ namespace ProjectDavomat.AdminPanel.Controllers
                 FirstName = viewModel.FirstName,
                 LastName = viewModel.LastName,
                 Position = viewModel.Position,
-                Image = _deleteSaveimage.SaveImage(viewModel.Image)
+                Image = await _deleteSaveimage.SaveImageAsync(viewModel.Image)
             };
             await _leaderInterface.AddLeader(leader);
             return RedirectToAction("Leaders");
@@ -56,7 +56,7 @@ namespace ProjectDavomat.AdminPanel.Controllers
             if (viewModel.NewImage is not null)
             {
                 _deleteSaveimage.DeleteImage(viewModel.Image);
-                viewModel.Image = _deleteSaveimage.SaveImage(viewModel.NewImage);
+                viewModel.Image = await _deleteSaveimage.SaveImageAsync(viewModel.NewImage);
             }
 
             var item = await _leaderInterface.UpdateLeader((Leader)viewModel);

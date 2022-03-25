@@ -41,7 +41,7 @@ namespace ProjectDavomat.AdminPanel.Controllers
                 Name = newViewModel.Name,
                 LifeTimeService = newViewModel.LifeTimeService,
                 Price = newViewModel.Price,
-                Image = _deleteSaveimage.SaveImage(newViewModel.Image)
+                Image = await _deleteSaveimage.SaveImageAsync(newViewModel.Image)
 
             };
             await _serviceInterface.AddService(service);
@@ -60,7 +60,7 @@ namespace ProjectDavomat.AdminPanel.Controllers
             if (viewModel.NewImage is not null)
             {
                 _deleteSaveimage.DeleteImage(viewModel.Image);
-                viewModel.Image = _deleteSaveimage.SaveImage(viewModel.NewImage);
+                viewModel.Image = await _deleteSaveimage.SaveImageAsync(viewModel.NewImage);
             }
 
             var item = await _serviceInterface.UpdateService((Service)viewModel);

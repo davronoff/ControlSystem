@@ -1,10 +1,11 @@
 ﻿using Microsoft.AspNetCore.Http;
+using System.Threading.Tasks;
 
 namespace ProjectDavomat.AdminPanel.Services
 {
     public interface IDeleteSaveimageInterface
     {
-        string SaveImage(IFormFile formFile);
+        Task<string> SaveImageAsync(IFormFile formFile);
         bool DeleteImage(string fileName);
     }
 }
