@@ -42,7 +42,7 @@ namespace DavomatProject.Api.Controllers
             return Ok(json);
         } 
         [HttpPost, Route("add")]
-        public async Task<ActionResult<EmployeeModel>> Add([FromForm]Leader newLeader)
+        public async Task<ActionResult<Leader>> Add([FromForm]Leader newLeader)
         {
             var json = await _leaderInterface.AddLeader(newLeader );
             return Ok(json);

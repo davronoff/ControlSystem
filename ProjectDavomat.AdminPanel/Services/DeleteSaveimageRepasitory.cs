@@ -48,7 +48,7 @@ namespace ProjectDavomat.AdminPanel.Services
         public async Task<string> SaveImageAsync(IFormFile formFile)
         {
             HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("https://ilyosbek.uz/rtm/api/image/");
+            client.BaseAddress = new Uri("https://localhost:44336/api/image/");
             MultipartFormDataContent form = new MultipartFormDataContent();
             HttpContent content = new StringContent("file");
             form.Add(content, "file");

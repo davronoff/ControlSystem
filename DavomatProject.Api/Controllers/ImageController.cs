@@ -1,10 +1,8 @@
 ﻿using Amazon.S3;
 using Amazon.S3.Model;
-using DavomatProject.Api.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.IO;
 using System.Threading.Tasks;
 
 namespace DavomatProject.Api.Controllers
@@ -12,12 +10,8 @@ namespace DavomatProject.Api.Controllers
     [ApiController, Route("api/[controller]")]
     public class ImageController : ControllerBase
     {
-        private readonly IAmazonS3 _amazonS3;
-
-        public ImageController(IAmazonS3 amazonS3)
-        {
-            _amazonS3 = amazonS3;
-        }
+        private string BucketName = "rtm-images";
+        private IAmazonS3 client = new AmazonS3Client("AKIA2PK65C7G5XOEXK6D", "u6Kli+bvTuikKAGPK3WqP6dn0NBp8IKR8ZHQgupp", Amazon.RegionEndpoint.USEast1);
 
         [HttpPost]
         [Route("save")] 
@@ -26,52 +20,17 @@ namespace DavomatProject.Api.Controllers
             string uniqueName = Guid.NewGuid().ToString() + file.FileName;
             var put = new PutObjectRequest()
             {
-                BucketName = "rtm-images",
+                BucketName = this.BucketName,
                 Key = uniqueName,
                 InputStream = file.OpenReadStream(),
                 ContentType = file.ContentType
             };
 
-            var result = await _amazonS3.PutObjectAsync(put);
+            await client.PutObjectAsync(put);
+            uniqueName = "https://rtm-images.s3.amazonaws.com/" + uniqueName;
+
 
             return uniqueName;
-        }
-
-        [HttpGet]
-        [Route("get")]
-        public async Task<IActionResult> GetImage([FromQuery]string fileName)
-        {
-            var get = new GetObjectRequest()
-            {
-                BucketName = "rtm-images",
-                Key = fileName
-            };
-
-            using GetObjectResponse response = await _amazonS3.GetObjectAsync(get);
-            using Stream responseStream = response.ResponseStream;
-            var stream = new MemoryStream();
-            await responseStream.CopyToAsync(stream);
-            stream.Position = 0;
-
-            return new FileStreamResult(stream, response.Headers["Content-Type"])
-            {
-                FileDownloadName = fileName
-            };
-        }
-
-        [HttpDelete]
-        [Route("delete")]
-        public async Task<IActionResult> DeleteImage(string fileName)
-        {
-            var delete = new DeleteObjectRequest()
-            {
-                BucketName = "rtm-images",
-                Key = fileName
-            };
-
-            await _amazonS3.DeleteObjectAsync(delete);
-
-            return Ok();
         }
     }
 }
