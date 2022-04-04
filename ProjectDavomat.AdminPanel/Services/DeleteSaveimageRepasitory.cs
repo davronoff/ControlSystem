@@ -20,24 +20,17 @@ namespace ProjectDavomat.AdminPanel.Services
         {
             _webHostEnvironment = webHostEnvironment;
         }
-        public bool DeleteImage(string fileName)
+
+        public async Task<bool> DeleteImageAsync(string fileName)
         {
             try
             {
-                fileName = fileName.Split(new string[] { "https://ilyosbek.uz/rtm/images/" }, StringSplitOptions.None)[1];
+                fileName = fileName.Split(new string[] { "https://ilyosbek.uz/rtm/images/delete" }, StringSplitOptions.None)[1];
 
-                if (fileName is not null)
-                {
-                    string uplodFolder = Path.Combine(@"C:\inetpub\wwwroot\RTM_API\wwwroot\", "images");
-                    string filePath = Path.Combine(uplodFolder, fileName);
-                    FileInfo fileInfo = new FileInfo(filePath);
-                    if (fileInfo.Exists)
-                    {
-                        fileInfo.Delete();
-                    }
-                    return true;
-                }
-                return false;
+                HttpClient client = new HttpClient();
+                client.BaseAddress = new Uri("https://ilyosbek.uz/rtm/api/image/");
+                var response = await client.DeleteAsync(fileName);
+                return true;
             }
             catch (Exception)
             {
@@ -48,7 +41,7 @@ namespace ProjectDavomat.AdminPanel.Services
         public async Task<string> SaveImageAsync(IFormFile formFile)
         {
             HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("https://localhost:44336/api/image/");
+            client.BaseAddress = new Uri("https://ilyosbek.uz/rtm/api/image/");
             MultipartFormDataContent form = new MultipartFormDataContent();
             HttpContent content = new StringContent("file");
             form.Add(content, "file");
@@ -57,7 +50,7 @@ namespace ProjectDavomat.AdminPanel.Services
             content.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
             {
                 Name = "file",
-                FileName = formFile.FileName
+                FileName = formFile.FileName.Replace(" ", "")
             };
             form.Add(content);
 
