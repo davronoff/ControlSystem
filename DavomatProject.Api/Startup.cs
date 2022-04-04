@@ -1,4 +1,3 @@
-using Amazon.S3;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -25,7 +24,6 @@ namespace DavomatProject.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddAWSService<IAmazonS3>();
             services.AddScoped<ILeaderInterface, LeaderRepository>();
             services.AddScoped<ICourseCategoryInterface, CourseCategoryRepasitory>();
             services.AddScoped<ITeacherInterface, TeacherRepasitory>();

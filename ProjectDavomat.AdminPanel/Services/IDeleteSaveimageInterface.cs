@@ -6,6 +6,6 @@ namespace ProjectDavomat.AdminPanel.Services
     public interface IDeleteSaveimageInterface
     {
         Task<string> SaveImageAsync(IFormFile formFile);
-        bool DeleteImage(string fileName);
+        Task<bool> DeleteImageAsync(string fileName);
     }
 }

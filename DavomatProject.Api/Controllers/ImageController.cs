@@ -1,8 +1,8 @@
-﻿using Amazon.S3;
-using Amazon.S3.Model;
+﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace DavomatProject.Api.Controllers
@@ -10,27 +10,45 @@ namespace DavomatProject.Api.Controllers
     [ApiController, Route("api/[controller]")]
     public class ImageController : ControllerBase
     {
-        private string BucketName = "rtm-images";
-        private IAmazonS3 client = new AmazonS3Client("AKIA2PK65C7G5XOEXK6D", "u6Kli+bvTuikKAGPK3WqP6dn0NBp8IKR8ZHQgupp", Amazon.RegionEndpoint.USEast1);
+        private readonly IWebHostEnvironment _environment;
+
+        public ImageController(IWebHostEnvironment environment)
+        {
+            _environment = environment;
+        }
 
         [HttpPost]
         [Route("save")] 
-        public async Task<string> UploadImage(IFormFile file)
+        public string UploadImage(IFormFile file)
         {
-            string uniqueName = Guid.NewGuid().ToString() + file.FileName;
-            var put = new PutObjectRequest()
+            string uniqueName = string.Empty;
+            if (file != null)
             {
-                BucketName = this.BucketName,
-                Key = uniqueName,
-                InputStream = file.OpenReadStream(),
-                ContentType = file.ContentType
-            };
+                string uplodFolder = Path.Combine(_environment.WebRootPath, "images");
+                uniqueName = Guid.NewGuid().ToString() + "_" + file.FileName;
+                string filePath = Path.Combine(uplodFolder, uniqueName);
+                FileStream fileStream = new FileStream(filePath, FileMode.Create);
+                file.CopyTo(fileStream);
+                fileStream.Close();
+            }
 
-            await client.PutObjectAsync(put);
-            uniqueName = "https://rtm-images.s3.amazonaws.com/" + uniqueName;
+            return "https://ilyosbek.uz/rtm/images/"+uniqueName;
+        }
 
-
-            return uniqueName;
+        [HttpDelete]
+        [Route("delete/{fileName}")]
+        public void DeleteImage(string fileName)
+        {
+            if (fileName is not null)
+            {
+                string uplodFolder = Path.Combine(_environment.WebRootPath, "Images");
+                string filePath = Path.Combine(uplodFolder, fileName);
+                FileInfo fileInfo = new FileInfo(filePath);
+                if (fileInfo.Exists)
+                {
+                    fileInfo.Delete();
+                }
+            }
         }
     }
 }

@@ -57,7 +57,7 @@ namespace ProjectDavomat.AdminPanel.Controllers
         {
             if (viewModel.NewImage is not null)
             {
-                _deleteSaveimage.DeleteImage(viewModel.Image);
+                _deleteSaveimage.DeleteImageAsync(viewModel.Image);
                 viewModel.Image = await _deleteSaveimage.SaveImageAsync(viewModel.NewImage);
             }
             var model = await _teacherInterface.UpdateTeacher((Teacher)viewModel);
@@ -67,7 +67,7 @@ namespace ProjectDavomat.AdminPanel.Controllers
         public async Task<IActionResult> Delete(Guid id)
         {
             var teacher = await _teacherInterface.GetTeacher(id);
-            _deleteSaveimage.DeleteImage(teacher.Image);
+            _deleteSaveimage.DeleteImageAsync(teacher.Image);
             await _teacherInterface.DeleteTeacher(id);
             return RedirectToAction("Teachers");
         }
