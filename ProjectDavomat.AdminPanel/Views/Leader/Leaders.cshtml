@@ -29,19 +29,7 @@
                             <td>@item.FirstName</td>
                             <td>@item.LastName</td>
                             <td>@item.Position</td>
-                            @{
-                                string imageSource = @item.Image;
-                                if (!imageSource.Contains("http"))
-                                {
-                                    imageSource = "~/images/" + imageSource;
-                                }
-                                else if  (imageSource.Contains("ilyosbek"))
-                                {
-                                    string[] vs = imageSource.Split(new string[] {"https://ilyosbek.uz/rtm/images/"}, StringSplitOptions.None);
-                                    imageSource = "~/images/" + vs[1];
-                                }
-                            }
-                            <td><img src="@imageSource" asp-append-version="true" style="width: 50px;"/></td>
+                            <td><img src="@item.Image" asp-append-version="true" style="width: 50px;"/></td>
                             <td class="cell">
                                 <a asp-controller="leader" asp-action="editleader" asp-route-id="@item.Id">
                                     <span class="btn btn-success">Tahrirlash</span>
