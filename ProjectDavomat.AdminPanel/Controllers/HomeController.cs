@@ -33,11 +33,8 @@ namespace ProjectDavomat.AdminPanel.Controllers
         }
 
         [Authorize]
-        public async Task<IActionResult> Index(AllStatisticViewModel viewModel)
+        public IActionResult Index(AllStatisticViewModel viewModel)
         {
-            var item = await _courseservice.GetAllCourse();
-            var all = item.Count();
-            
             return View(viewModel);
         }
     }
