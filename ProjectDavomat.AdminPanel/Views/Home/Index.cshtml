@@ -3,10 +3,11 @@
     Layout = "_Layout";
 }
 
-
+@model AllStatisticViewModel
 <div class="d-flex justify-content-between mt-5 com-header">
     <h4>Barcha natijalar</h4>
-    <span class="btn btn-success"><i class="las la-plus"></i>Xixix</span>
+    <h4></h4>
+    <p>@Model.Courses.Count()"</p>
 </div>
 <hr>
 <div class="row mt-5 d-flex justify-content-center">
@@ -14,6 +15,7 @@
         <span class="las la-shopping-bag icon"></span>
         <div class="card-body">
             <a href="index.html" class="btn btn-primary">Some <span class="las la-arrow-right"></span></a>
+            <input value="@Model.Courses.Count()" width="100px" />
         </div>
     </div>
 </div>  

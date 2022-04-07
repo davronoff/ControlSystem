@@ -3,6 +3,7 @@ using ProjectDavomat.BL.Interface;
 using ProjectDavomat.Data.DataLayer;
 using ProjectDavomat.Domain;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -36,6 +37,7 @@ namespace ProjectDavomat.BL.Repasitory
 
         public Task<Leader> GetLeader(Guid id) => _dbContext.leaders.FirstOrDefaultAsync(p => p.Id == id);
 
+        public int GetLeaderCount() => _dbContext.leaders.Count();
         public Task<Leader> UpdateLeader(Leader leader)
         {
             _dbContext.leaders.Update(leader);

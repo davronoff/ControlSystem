@@ -1,5 +1,6 @@
 ﻿using ProjectDavomat.Domain;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -12,5 +13,6 @@ namespace ProjectDavomat.BL.Interface
         Task<Leader> AddLeader(Leader leader);
         Task<Leader> UpdateLeader(Leader leader);
         Task DeleteLeader(Guid id);
+        int GetLeaderCount();
     }
 }
