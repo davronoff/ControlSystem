@@ -29,6 +29,7 @@ namespace ProjectDavomat.AdminPanel
             services.AddScoped<IUserInterface, UserRepasitory>();
 
             services.AddScoped<IStaffInterface, StaffRepasitory>();
+            services.AddTransient<IStatInterface, StatRepo>();
 
             services.AddScoped<ICourseInterface, CourseRepasitory>();
 

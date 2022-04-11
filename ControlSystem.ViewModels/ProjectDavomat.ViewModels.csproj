@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ProjectDavomat.Domain\ProjectDavomat.Domain.csproj" />
+    <ProjectReference Include="..\ProjectDavomat.BL\ProjectDavomat.BL.csproj" />
   </ItemGroup>
 
 </Project>

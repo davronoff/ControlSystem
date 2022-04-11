@@ -3,18 +3,34 @@
     Layout = "_Layout";
 }
 
-
+@model AllStatisticViewModel
 <div class="d-flex justify-content-between mt-5 com-header">
-    <h4>Barcha natijalar</h4>
-    <span class="btn btn-success"><i class="las la-plus"></i>Xixix</span>
+    <h4>Barcha statistikalar</h4>
 </div>
 <hr>
 <div class="row mt-5 d-flex justify-content-center">
     <div class="card col-xs-6 col-sm-2 card-stil">
-        <span class="las la-shopping-bag icon"></span>
+        <span style="padding-top: 2rem; font-size: 3.4rem; ">@Model.Services</span>
         <div class="card-body">
-            <a href="index.html" class="btn btn-primary">Some <span class="las la-arrow-right"></span></a>
+            <a asp-controller="service" asp-action="services" class="btn btn-primary">Xizmatlar</a>
         </div>
     </div>
-</div>  
-
+    <div class="card col-xs-6 col-sm-2 card-stil">
+        <span style="padding-top: 2rem; font-size: 3.4rem; ">@Model.Courses</span>
+        <div class="card-body">
+            <a asp-controller="course" asp-action="courses" class="btn btn-warning">Kurslar</a>
+        </div>
+    </div>
+    <div class="card col-xs-6 col-sm-2 card-stil">
+        <span style="padding-top: 2rem; font-size: 3.4rem; ">@Model.Staffs</span>
+        <div class="card-body">
+            <a asp-controller="staff" asp-action="staffs" class="btn btn-secondary">Xodimlar</a>
+        </div>
+    </div>
+    <div class="card col-xs-6 col-sm-2 card-stil">
+        <span style="padding-top: 2rem; font-size: 3.4rem; ">@Model.Leaders</span>
+        <div class="card-body">
+            <a asp-controller="leader" asp-action="leaders" class="btn btn-success">Rahbarlar</a>
+        </div>
+    </div>
+</div>

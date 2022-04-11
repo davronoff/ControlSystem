@@ -1,24 +1,31 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ProjectDavomat.BL.Interface;
+using ProjectDavomat.Data.DataLayer;
+using ProjectDavomat.Domain;
+using ProjectDavomat.ViewModels;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace ProjectDavomat.AdminPanel.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ICourseInterface _courseInterface;
+        private readonly IStatInterface _statInterface;
+        private readonly AppDbContext _dbContext;
 
-        public HomeController(ICourseInterface courseInterface)
+        public HomeController(IStatInterface statInterface,
+                              AppDbContext dbContext)
         {
-            _courseInterface = courseInterface;    
+            _statInterface = statInterface;
+            _dbContext = dbContext;
         }
 
         [Authorize]
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            var item = await _courseInterface.GetAllCourse();
-            return View(item);
+            var statistics = _statInterface.GetAllStatistics();
+            return View(statistics);
         }
     }
 }
