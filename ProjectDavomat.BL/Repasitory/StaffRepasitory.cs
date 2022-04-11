@@ -53,13 +53,13 @@ namespace ProjectDavomat.BL.Repasitory
         //get random 3 staffs
         public Task<List<Staff>> GetRandomStaff3()
         {
-            if (_dbStaff.staffs.Count() <= 4)
+            if (_dbStaff.staffs.Count() <= 3)
             {
                 return _dbStaff.staffs.ToListAsync();
             }
             else
             {
-                return _dbStaff.staffs.Take(4).ToListAsync();
+                return _dbStaff.staffs.Take(3).ToListAsync();
             }
         }
     }
