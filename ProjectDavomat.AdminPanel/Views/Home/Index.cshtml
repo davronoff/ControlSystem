@@ -12,25 +12,25 @@
     <div class="card col-xs-6 col-sm-2 card-stil">
         <span style="padding-top: 2rem; font-size: 3.4rem; ">@Model.Services</span>
         <div class="card-body">
-            <span class="btn btn-primary">Xizmatlar</span>
+            <a asp-controller="service" asp-action="services" class="btn btn-primary">Xizmatlar</a>
         </div>
     </div>
     <div class="card col-xs-6 col-sm-2 card-stil">
         <span style="padding-top: 2rem; font-size: 3.4rem; ">@Model.Courses</span>
         <div class="card-body">
-            <span class="btn btn-warning">Kurslar</span>
+            <a asp-controller="course" asp-action="courses" class="btn btn-warning">Kurslar</a>
         </div>
     </div>
     <div class="card col-xs-6 col-sm-2 card-stil">
         <span style="padding-top: 2rem; font-size: 3.4rem; ">@Model.Staffs</span>
         <div class="card-body">
-            <span class="btn btn-secondary">Xodimlar</span>
+            <a asp-controller="staff" asp-action="staffs" class="btn btn-secondary">Xodimlar</a>
         </div>
     </div>
     <div class="card col-xs-6 col-sm-2 card-stil">
         <span style="padding-top: 2rem; font-size: 3.4rem; ">@Model.Leaders</span>
         <div class="card-body">
-            <span class="btn btn-success">Rahbarlar</span>
+            <a asp-controller="leader" asp-action="leaders" class="btn btn-success">Rahbarlar</a>
         </div>
     </div>
 </div>
