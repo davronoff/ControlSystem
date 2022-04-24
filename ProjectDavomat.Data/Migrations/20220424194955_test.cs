@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ProjectDavomat.Data.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class test : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -20,13 +20,29 @@ namespace ProjectDavomat.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "leaders",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    FirstName = table.Column<string>(type: "text", nullable: false),
+                    LastName = table.Column<string>(type: "text", nullable: false),
+                    Position = table.Column<string>(type: "text", nullable: false),
+                    Image = table.Column<string>(type: "text", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_leaders", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "services",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    ServiceType = table.Column<string>(type: "text", nullable: false),
                     Name = table.Column<string>(type: "text", nullable: false),
-                    MyService = table.Column<string>(type: "text", nullable: false),
-                    Price = table.Column<double>(type: "double precision", nullable: false),
+                    LifeTimeService = table.Column<string>(type: "text", nullable: false),
+                    Price = table.Column<string>(type: "text", nullable: false),
                     Image = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
@@ -43,7 +59,8 @@ namespace ProjectDavomat.Data.Migrations
                     LastName = table.Column<string>(type: "text", nullable: false),
                     Image = table.Column<string>(type: "text", nullable: false),
                     About = table.Column<string>(type: "text", nullable: false),
-                    Position = table.Column<string>(type: "text", nullable: false)
+                    Position = table.Column<string>(type: "text", nullable: false),
+                    Social = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -57,32 +74,11 @@ namespace ProjectDavomat.Data.Migrations
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     FirstName = table.Column<string>(type: "text", nullable: false),
                     LastName = table.Column<string>(type: "text", nullable: false),
-                    Telefonraqam = table.Column<int>(type: "integer", nullable: false)
+                    PhoneNumber = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_students", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "courses",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    Name = table.Column<string>(type: "text", nullable: false),
-                    Duration = table.Column<string>(type: "text", nullable: false),
-                    Image = table.Column<string>(type: "text", nullable: false),
-                    CourseCategoryId = table.Column<Guid>(type: "uuid", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_courses", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_courses_courseCategories_CourseCategoryId",
-                        column: x => x.CourseCategoryId,
-                        principalTable: "courseCategories",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -95,32 +91,51 @@ namespace ProjectDavomat.Data.Migrations
                     Skills = table.Column<string>(type: "text", nullable: false),
                     Image = table.Column<string>(type: "text", nullable: false),
                     Experince = table.Column<string>(type: "text", nullable: false),
-                    CourseId = table.Column<Guid>(type: "uuid", nullable: true)
+                    Social = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_teachers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "courses",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Price = table.Column<string>(type: "text", nullable: false),
+                    Title = table.Column<string>(type: "text", nullable: false),
+                    Name = table.Column<string>(type: "text", nullable: false),
+                    Duration = table.Column<string>(type: "text", nullable: false),
+                    Description = table.Column<string>(type: "text", nullable: false),
+                    Image = table.Column<string>(type: "text", nullable: false),
+                    CourseCategoryId = table.Column<Guid>(type: "uuid", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_courses", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_teachers_courses_CourseId",
-                        column: x => x.CourseId,
-                        principalTable: "courses",
+                        name: "FK_courses_courseCategories_CourseCategoryId",
+                        column: x => x.CourseCategoryId,
+                        principalTable: "courseCategories",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_courses_CourseCategoryId",
                 table: "courses",
                 column: "CourseCategoryId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_teachers_CourseId",
-                table: "teachers",
-                column: "CourseId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "courses");
+
+            migrationBuilder.DropTable(
+                name: "leaders");
+
             migrationBuilder.DropTable(
                 name: "services");
 
@@ -132,9 +147,6 @@ namespace ProjectDavomat.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "teachers");
-
-            migrationBuilder.DropTable(
-                name: "courses");
 
             migrationBuilder.DropTable(
                 name: "courseCategories");

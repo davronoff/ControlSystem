@@ -33,7 +33,7 @@ namespace DavomatProject.Api
             services.AddScoped<IServiceInterface, ServiceRepasitory>();
 
             services.AddDbContext<AppDbContext>(options =>
-                options.UseNpgsql(Configuration.GetConnectionString("PostgreDb")));
+                options.UseNpgsql(Configuration.GetConnectionString("LocalPostgreDb")));
 
             services.AddControllers();
             services.AddCors();

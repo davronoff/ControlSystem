@@ -10,8 +10,8 @@ using ProjectDavomat.Data.DataLayer;
 namespace ProjectDavomat.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220302101328_Inital")]
-    partial class Inital
+    [Migration("20220424194955_test")]
+    partial class test
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -30,6 +30,10 @@ namespace ProjectDavomat.Data.Migrations
                     b.Property<Guid>("CourseCategoryId")
                         .HasColumnType("uuid");
 
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<string>("Duration")
                         .IsRequired()
                         .HasColumnType("text");
@@ -39,6 +43,14 @@ namespace ProjectDavomat.Data.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Price")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("text");
 
@@ -64,6 +76,33 @@ namespace ProjectDavomat.Data.Migrations
                     b.ToTable("courseCategories");
                 });
 
+            modelBuilder.Entity("ProjectDavomat.Domain.Leader", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Position")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("leaders");
+                });
+
             modelBuilder.Entity("ProjectDavomat.Domain.Service", b =>
                 {
                     b.Property<Guid>("Id")
@@ -74,7 +113,7 @@ namespace ProjectDavomat.Data.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("MyService")
+                    b.Property<string>("LifeTimeService")
                         .IsRequired()
                         .HasColumnType("text");
 
@@ -82,8 +121,13 @@ namespace ProjectDavomat.Data.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<double>("Price")
-                        .HasColumnType("double precision");
+                    b.Property<string>("Price")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("ServiceType")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
@@ -114,6 +158,9 @@ namespace ProjectDavomat.Data.Migrations
 
                     b.Property<string>("Position")
                         .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Social")
                         .HasColumnType("text");
 
                     b.HasKey("Id");
@@ -147,6 +194,9 @@ namespace ProjectDavomat.Data.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<string>("Social")
+                        .HasColumnType("text");
+
                     b.HasKey("Id");
 
                     b.ToTable("teachers");
@@ -166,7 +216,7 @@ namespace ProjectDavomat.Data.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("Telefonraqam")
+                    b.Property<int>("PhoneNumber")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");

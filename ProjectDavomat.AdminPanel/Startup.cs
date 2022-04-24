@@ -40,7 +40,7 @@ namespace ProjectDavomat.AdminPanel
             services.AddScoped<IDeleteSaveimageInterface, DeleteSaveimageRepasitory>();
 
             services.AddDbContext<AppDbContext>(options =>
-                options.UseNpgsql(Configuration.GetConnectionString("PostgreDb")));
+                options.UseNpgsql(Configuration.GetConnectionString("LocalPostgreDb")));
 
             services.AddControllersWithViews();
         }
