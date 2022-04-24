@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectDavomat.Data", "Proj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectDavomat.Domain", "ProjectDavomat.Domain\ProjectDavomat.Domain.csproj", "{69DAACB8-3B17-4593-A4F9-076DC8CC761B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectDavomat.WebSite", "ProjectDavomat.WebSite\ProjectDavomat.WebSite.csproj", "{E2A5049D-B5CD-4ACE-AC6A-4DEBB4CCEF14}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DavomatProject.Api", "DavomatProject.Api\DavomatProject.Api.csproj", "{3FCDBB68-3553-4E91-8AD1-10000447BEB0}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectDavomat.BL", "ProjectDavomat.BL\ProjectDavomat.BL.csproj", "{76E0ED1A-82E3-44FE-BCE4-748D347F4754}"
@@ -31,10 +29,6 @@ Global
 		{69DAACB8-3B17-4593-A4F9-076DC8CC761B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{69DAACB8-3B17-4593-A4F9-076DC8CC761B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{69DAACB8-3B17-4593-A4F9-076DC8CC761B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E2A5049D-B5CD-4ACE-AC6A-4DEBB4CCEF14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E2A5049D-B5CD-4ACE-AC6A-4DEBB4CCEF14}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E2A5049D-B5CD-4ACE-AC6A-4DEBB4CCEF14}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E2A5049D-B5CD-4ACE-AC6A-4DEBB4CCEF14}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3FCDBB68-3553-4E91-8AD1-10000447BEB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3FCDBB68-3553-4E91-8AD1-10000447BEB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3FCDBB68-3553-4E91-8AD1-10000447BEB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
